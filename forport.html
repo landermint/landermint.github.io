@@ -1,5 +1,6 @@
 <html> 
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="detect.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
@@ -15,6 +16,11 @@
 			  font-style: normal;
 			    letter-spacing: .14em;
     	}
+      video {
+  /* override other styles to make responsive */
+  width: 100%    !important;
+  height: auto   !important;
+}
 .white-popup {
   position: relative;
   background: #FFF;
@@ -310,6 +316,9 @@
         width:228px;
       }
             @media only screen and (max-width: 900px) {
+              #easyTooltip{
+                display: none !important;
+              }
               #controls{
                 top:0px;
               }
@@ -1573,9 +1582,9 @@ $( "#showcode" ).click(function() {
 <div id="test-popup" class="white-popup mfp-hide">
 	<center>
 		<h1>Front Code</h1><br>
-  <textarea id="frontbox" name="Front Code" rows="20" cols="50"></textarea><br>
+  <textarea id="frontbox" name="Front Code" rows="14" cols="30"></textarea><br>
   		<h1>Back Code</h1><br>
-    <textarea id="backbox" name="Back Code" rows="20" cols="50"></textarea><br><br>
+    <textarea id="backbox" name="Back Code" rows="14" cols="30"></textarea><br><br>
 </center>
 </div>
 <div id="video-popup" class="white-popup mfp-hide">
