@@ -135,6 +135,7 @@ function render() {
   var delta = clock.getDelta();
   if (mixer != null) mixer.update(delta);
   if (model) model.rotation.y += 0.025;
+  console.log(model.rotation.y);
 
   renderer.render(scene, camera);
 }
