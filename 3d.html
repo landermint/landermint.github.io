@@ -80,7 +80,7 @@ var windowHalfY = window.innerHeight / 2;
 function onDocumentMouseMove( event ) {
 
     mouseX = ( event.clientX - windowHalfX );
-    mouseY = ( event.clientY - windowHalfY );
+    mouseY = ( event.clientY - windowHalfY )+20;
 
 }
 
@@ -152,7 +152,7 @@ function render() {
   	//model.rotation.y += 0.025;
   	    target.x += ( mouseX - target.x ) * .02;
     target.y += ( - mouseY - target.y ) * .02;
-    target.z = camera.position.z+150; // assuming the camera is located at ( 0, 0, z );
+    target.z = camera.position.z+200; // assuming the camera is located at ( 0, 0, z );
     model.lookAt( target );
 
   }
