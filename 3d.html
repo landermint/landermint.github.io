@@ -107,7 +107,7 @@ var loader = new THREE.GLTFLoader();
 var mixer;
 var model;
 loader.load(
-"https://raw.githubusercontent.com/baronwatts/models/master/robber.glb", function (gltf) {
+"scene.gltf", function (gltf) {
 
   gltf.scene.traverse(function (node) {
     if (node instanceof THREE.Mesh) {
@@ -121,20 +121,9 @@ loader.load(
   model.scale.set(.35, .35, .35);
   scene.add(model);
 
-  console.log(gltf.animations); //shows all animations imported into the dopesheet in blender
 
-  mixer = new THREE.AnimationMixer(model);
-  mixer.clipAction(gltf.animations[1]).play();
 
-  document.body.addEventListener("click", kill);
-  function kill() {
-    mixer.clipAction(gltf.animations[1]).stop();
-    mixer.clipAction(gltf.animations[0]).play();
-    setTimeout(function () {
-      mixer.clipAction(gltf.animations[0]).stop();
-      mixer.clipAction(gltf.animations[1]).play();
-    }, 1500);
-  }
+
 
 
 });
