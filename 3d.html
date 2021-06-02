@@ -55,7 +55,7 @@ h3 {
 
 <style></style></head>
 
-<body translate="no" onload="script();">
+<body translate="no">
   <div id="info">
   <a href="http://threejs.org" target="_blank" rel="noopener">three.js</a> - GLTFLoader<br> 3d model from
   <a href="https://www.all3dfree.net/3dcharacter005.html" target="_blank" rel="noopener">all3dfree.net</a><br> rigged with <a href="https://www.mixamo.com/" target="_blank" rel="noopener">Mixamo</a><br>
@@ -69,7 +69,6 @@ h3 {
 
   
       <script id="rendered-js">
-      	function script(){
 
       		var target = new THREE.Vector3();
 
@@ -153,7 +152,7 @@ function render() {
   	//model.rotation.y += 0.025;
   	    target.x += ( mouseX - target.x ) * .02;
     target.y += ( - mouseY - target.y ) * .02;
-    target.z = camera.position.z; // assuming the camera is located at ( 0, 0, z );
+    target.z = camera.position.z-50; // assuming the camera is located at ( 0, 0, z );
     model.lookAt( target );
 
   }
@@ -165,7 +164,7 @@ render();
 //# sourceURL=pen.js
     document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 
-}
+
     </script>
     <canvas width="1365" height="475" style="display: block; width: 1365px; height: 475px;"></canvas>
 
