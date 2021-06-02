@@ -1,129 +1,163 @@
-<!DOCTYPE html>
-<html>
-	<head>
+<html lang="en"><head>
 
-		<meta charset="utf-8">
-		<title>My first three.js app</title>
-		<style>
-		body {
-		  font-family: Monospace;
-		  background: #222;
-		  color: #fff;
-		  margin: 0px;
-		  overflow: hidden;
-		}
-		h3 {
-		  font-weight: normal;
-		}
-		#info {
-		  color: #fff;
-		  position: absolute;
-		  top: 10px;
-		  width: 100%;
-		  text-align: center;
-		  z-index: 100;
-		  display: block;
-		}
-		#info a {
-		  color: #75ddc1;
-		  font-weight: bold;
-		}
+  <meta charset="UTF-8">
+  
+<link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
+<meta name="apple-mobile-web-app-title" content="CodePen">
 
-		</style>
+<link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
 
-		<script>
-		 //===================================================== canvas
-		  var renderer = new THREE.WebGLRenderer({ alpha: true, antialiase: true });
-		  renderer.setSize(window.innerWidth, window.innerHeight);
-		  document.body.appendChild(renderer.domElement);
-
-		  //===================================================== scene
-		  var scene = new THREE.Scene();
-
-		  //===================================================== camera
-		  var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000);
-		  camera.position.z = 5;
-		  camera.position.y = 1.5;
-
-		  //===================================================== lights
-		  var light = new THREE.DirectionalLight(0xefefff, 3);
-		  light.position.set(1, 1, 1).normalize();
-		  scene.add(light);
-		  var light = new THREE.DirectionalLight(0xffefef, 3);
-		  light.position.set(-1, -1, -1).normalize();
-		  scene.add(light);
-
-		  //===================================================== resize
-		  window.addEventListener("resize", function() {
-		    let width = window.innerWidth;
-		    let height = window.innerHeight;
-		    renderer.setSize(width, height);
-		    camera.aspect = width / height;
-		    camera.updateProjectionMatrix();
-		  });
+<link rel="mask-icon" type="" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111">
 
 
-		  //===================================================== model
-		  var loader = new THREE.GLTFLoader();
-		  var mixer;
-		  var model;
-		  loader.load(
-		    "https://raw.githubusercontent.com/baronwatts/models/master/robber.glb", function(gltf) {
+  <title>CodePen - Three.js GLTF Loader</title>
+  
+  
+  
+  
+<style>
+body {
+  font-family: Monospace;
+  background: #222;
+  color: #fff;
+  margin: 0px;
+  overflow: hidden;
+}
+h3 {
+  font-weight: normal;
+}
+#info {
+  color: #fff;
+  position: absolute;
+  top: 10px;
+  width: 100%;
+  text-align: center;
+  z-index: 100;
+  display: block;
+}
+#info a {
+  color: #75ddc1;
+  font-weight: bold;
+}
+</style>
 
-		       gltf.scene.traverse( function( node ) {
-		          if ( node instanceof THREE.Mesh ) { 
-		            node.castShadow = true; 
-		            node.material.side = THREE.DoubleSide;
-		          }
-		        });
+  <script>
+  window.console = window.console || function(t) {};
+</script>
 
-		       
-		      model = gltf.scene;
-		      model.scale.set(.35,.35,.35);
-		      scene.add(model);
-
-		      console.log(gltf.animations); //shows all animations imported into the dopesheet in blender
-
-		      mixer = new THREE.AnimationMixer(model);
-		      mixer.clipAction(gltf.animations[1]).play();
-
-		      document.body.addEventListener("click", kill);
-		      function kill() {
-		        mixer.clipAction(gltf.animations[1]).stop();
-		        mixer.clipAction(gltf.animations[0]).play();
-		        setTimeout(function() {
-		          mixer.clipAction(gltf.animations[0]).stop();
-		          mixer.clipAction(gltf.animations[1]).play();
-		        }, 1500);
-		      }
-
-		 
-		  });
+  
+  
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
 
 
-		//===================================================== animate
-		var clock = new THREE.Clock();
-		function render() {
-		  requestAnimationFrame(render);
-		  var delta = clock.getDelta();
-		  if (mixer != null) mixer.update(delta);
-		  if (model) model.rotation.y += 0.025;
+<style></style></head>
 
-		  renderer.render(scene, camera);
-		}
-
-		render();
-		</script>
-	</head>
-	<body>
-<div id="info">
-  <a href="http://threejs.org" target="_blank" rel="noopener">three.js</a> - GLTFLoader<br /> 3d model from
-  <a href="https://www.all3dfree.net/3dcharacter005.html" target="_blank" rel="noopener">all3dfree.net</a><br /> rigged with <a href="https://www.mixamo.com/" target="_blank" rel="noopener">Mixamo</a><br />
+<body translate="no">
+  <div id="info">
+  <a href="http://threejs.org" target="_blank" rel="noopener">three.js</a> - GLTFLoader<br> 3d model from
+  <a href="https://www.all3dfree.net/3dcharacter005.html" target="_blank" rel="noopener">all3dfree.net</a><br> rigged with <a href="https://www.mixamo.com/" target="_blank" rel="noopener">Mixamo</a><br>
   <h3>click to animate</h3>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r124/three.min.js"></script>
 <script src="https://unpkg.com/three@0.126.0/examples/js/loaders/GLTFLoader.js"></script>
-<script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>	
-	</body>
-</html>
+<script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-8216c69d01441f36c0ea791ae2d4469f0f8ff5326f00ae2d00e4bb7d20e24edb.js"></script>
+
+  
+      <script id="rendered-js">
+//===================================================== canvas
+var renderer = new THREE.WebGLRenderer({ alpha: true, antialiase: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+//===================================================== scene
+var scene = new THREE.Scene();
+
+//===================================================== camera
+var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.z = 5;
+camera.position.y = 1.5;
+
+//===================================================== lights
+var light = new THREE.DirectionalLight(0xefefff, 3);
+light.position.set(1, 1, 1).normalize();
+scene.add(light);
+var light = new THREE.DirectionalLight(0xffefef, 3);
+light.position.set(-1, -1, -1).normalize();
+scene.add(light);
+
+//===================================================== resize
+window.addEventListener("resize", function () {
+  let width = window.innerWidth;
+  let height = window.innerHeight;
+  renderer.setSize(width, height);
+  camera.aspect = width / height;
+  camera.updateProjectionMatrix();
+});
+
+
+//===================================================== model
+var loader = new THREE.GLTFLoader();
+var mixer;
+var model;
+loader.load(
+"https://raw.githubusercontent.com/baronwatts/models/master/robber.glb", function (gltf) {
+
+  gltf.scene.traverse(function (node) {
+    if (node instanceof THREE.Mesh) {
+      node.castShadow = true;
+      node.material.side = THREE.DoubleSide;
+    }
+  });
+
+
+  model = gltf.scene;
+  model.scale.set(.35, .35, .35);
+  scene.add(model);
+
+  console.log(gltf.animations); //shows all animations imported into the dopesheet in blender
+
+  mixer = new THREE.AnimationMixer(model);
+  mixer.clipAction(gltf.animations[1]).play();
+
+  document.body.addEventListener("click", kill);
+  function kill() {
+    mixer.clipAction(gltf.animations[1]).stop();
+    mixer.clipAction(gltf.animations[0]).play();
+    setTimeout(function () {
+      mixer.clipAction(gltf.animations[0]).stop();
+      mixer.clipAction(gltf.animations[1]).play();
+    }, 1500);
+  }
+
+
+});
+
+
+//===================================================== animate
+var clock = new THREE.Clock();
+function render() {
+  requestAnimationFrame(render);
+  var delta = clock.getDelta();
+  if (mixer != null) mixer.update(delta);
+  if (model) model.rotation.y += 0.025;
+
+  renderer.render(scene, camera);
+}
+
+render();
+//# sourceURL=pen.js
+    </script><canvas width="1365" height="475" style="display: block; width: 1365px; height: 475px;"></canvas>
+
+  
+
+
+
+
+ 
+</body></html>
