@@ -63,12 +63,17 @@ h3 {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r124/three.min.js"></script>
 <script src="https://unpkg.com/three@0.126.0/examples/js/loaders/GLTFLoader.js"></script>
 <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
+<script src="https://threejs.org/examples/js/loaders/DRACOLoader.js"></script>
     <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-8216c69d01441f36c0ea791ae2d4469f0f8ff5326f00ae2d00e4bb7d20e24edb.js"></script>
 
   
       <script id="rendered-js">
 
       		var target = new THREE.Vector3();
+
+			THREE.DRACOLoader.setDecoderPath( 'https://threejs.org/examples/js/libs/draco/' );
+			THREE.DRACOLoader.setDecoderConfig( { type: 'js' } );
+			var dracoLoader = new THREE.DRACOLoader();
 
 var mouseX = 0, mouseY = 0;
 
