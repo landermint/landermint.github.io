@@ -124,9 +124,12 @@ window.addEventListener("resize", function () {
 var loader = new THREE.GLTFLoader();
 var mixer;
 var model;
-			THREE.DRACOLoader.setDecoderPath( 'https://threejs.org/examples/js/libs/draco/' );
-			THREE.DRACOLoader.setDecoderConfig( { type: 'js' } );
-			loader.setDRACOLoader( new THREE.DRACOLoader() );
+
+var dracoLoader = new THREE.DRACOLoader();
+
+dracoLoader.setDecoderPath( 'https://threejs.org/examples/js/libs/draco//' )
+loader.setDRACOLoader( dracoLoader );
+
 loader.load(
 "scene.gltf", function (gltf) {
 
