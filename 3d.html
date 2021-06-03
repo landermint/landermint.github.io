@@ -71,9 +71,7 @@ h3 {
 
       		var target = new THREE.Vector3();
 
-			THREE.DRACOLoader.setDecoderPath( 'https://threejs.org/examples/js/libs/draco/' );
-			THREE.DRACOLoader.setDecoderConfig( { type: 'js' } );
-			var dracoLoader = new THREE.DRACOLoader();
+
 
 var mouseX = 0, mouseY = 0;
 
@@ -126,6 +124,9 @@ window.addEventListener("resize", function () {
 var loader = new THREE.GLTFLoader();
 var mixer;
 var model;
+			THREE.DRACOLoader.setDecoderPath( 'https://threejs.org/examples/js/libs/draco/' );
+			THREE.DRACOLoader.setDecoderConfig( { type: 'js' } );
+			loader.setDRACOLoader( new THREE.DRACOLoader() );
 loader.load(
 "scene.gltf", function (gltf) {
 
