@@ -106,6 +106,9 @@ var light = new THREE.DirectionalLight(0xffefef, 3);
 light.position.set(-1, -1, -1).normalize();
 scene.add(light);
 
+var light = new THREE.DirectionalLight(0xffefef, 3);
+light.position.set(-1, -1, 1).normalize();
+scene.add(light);
 //===================================================== resize
 window.addEventListener("resize", function () {
   let width = window.innerWidth;
