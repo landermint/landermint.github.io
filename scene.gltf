@@ -146,7 +146,7 @@
 	"asset": {
 		"extras": {
 			"author": "ARmediaLab (https://sketchfab.com/Daryl.Gungadoo)",
-			"created": "Thu Jun  3 18:51:21 2021",
+			"created": "Thu Jun  3 18:55:33 2021",
 			"license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
 			"source": "https://sketchfab.com/models/731a8865922a4728b1841239b75a1870",
 			"title": "Jason head-scan 3D"
@@ -188,25 +188,14 @@
 		{
 			"doubleSided": true,
 			"emissiveFactor": [
-				0.0,
-				0.0,
-				0.0
+				1.0,
+				1.0,
+				1.0
 			],
-			"name": "material_0",
-			"pbrMetallicRoughness": {
-				"baseColorFactor": [
-					1.0,
-					1.0,
-					1.0,
-					1.0
-				],
-				"baseColorTexture": {
-					"index": 0,
-					"texCoord": 0
-				},
-				"metallicFactor": 0.0,
-				"roughnessFactor": 1.0
-			}
+			"emissiveTexture": {
+				"index": 0
+			},
+			"name": "material_0"
 		}
 	],
 	"meshes": [
