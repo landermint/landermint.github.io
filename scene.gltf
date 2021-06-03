@@ -1065,9 +1065,9 @@
 		{
 			"doubleSided": false,
 			"emissiveFactor": [
-				0.5,
-				0.5,
-				0.5
+				1,
+				1,
+				1
 			],
 			"emissiveTexture": {
 				"index": 0
