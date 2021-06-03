@@ -80,7 +80,7 @@ var windowHalfY = window.innerHeight / 2;
 function onDocumentMouseMove( event ) {
 
     mouseX = ( event.clientX - windowHalfX );
-    mouseY = ( event.clientY - windowHalfY )-100;
+    mouseY = ( event.clientY - windowHalfY )-200;
 
 }
 
@@ -151,7 +151,7 @@ function render() {
   if (model) {
   	//model.rotation.y += 0.025;
   	    target.x += ( mouseX - target.x ) * .005;
-    target.y += ( - mouseY - target.y ) * .009;
+    target.y += ( - mouseY - target.y ) * .007;
     target.z = camera.position.z+200; // assuming the camera is located at ( 0, 0, z );
     target.x = target.x/1.1;
     target.y = target.y/1.1;
