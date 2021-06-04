@@ -78,10 +78,35 @@ var mouseX = 0, mouseY = 0;
 var windowHalfX = window.innerWidth / 2;
 var windowHalfY = window.innerHeight / 2;
 
+window.addEventListener('touchstart', someFunction, false);
+window.addEventListener('touchmove', someFunction, false);
+window.addEventListener('touchend', someFunction, false);
+window.addEventListener('touchcancel', someFunction, false);
+window.addEventListener('mousedown', someFunction, false);
+window.addEventListener('mouseup', someFunction, false);
+window.addEventListener('mousemove', someFunction, false);
+window.addEventListener('mouseover', someFunction, false);
+window.addEventListener('mouseout', someFunction, false);
+window.addEventListener('mouseenter', someFunction, false);
+window.addEventListener('mouseleave', someFunction, false);
+
+
+function someFunction(e){
+	if(e.type == 'touchstart' || e.type == 'touchmove' || e.type == 'touchend' || e.type == 'touchcancel'){
+	    var evt = (typeof e.originalEvent === 'undefined') ? e : e.originalEvent;
+	    var touch = evt.touches[0] || evt.changedTouches[0];
+	    mousex = touch.pageX;
+	    mousey = touch.pageY;
+	} else if (e.type == 'mousedown' || e.type == 'mouseup' || e.type == 'mousemove' || e.type == 'mouseover'|| e.type=='mouseout' || e.type=='mouseenter' || e.type=='mouseleave') {
+	    mousex = e.clientX;
+	    mousey = e.clientY;
+	}
+}
+
 function onDocumentMouseMove( event ) {
 
-    mouseX = ( event.clientX - windowHalfX );
-    mouseY = ( event.clientY - windowHalfY )-200;
+    //mouseX = ( event.clientX - windowHalfX );
+   // mouseY = ( event.clientY - windowHalfY )-200;
 
 }
 
