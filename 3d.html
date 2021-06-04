@@ -168,10 +168,10 @@ function render() {
 	    target.x = target.x/1.1;
 	    target.y = target.y/1.1;
     } else {
-    	  	    target.x += ( mouseX - target.x ) * .008;
+    	  	    target.x += ( mouseX - target.x ) * .011;
   	    target.y += ( - mouseY - target.y ) * .009;
 	    target.z = camera.position.z+200; // assuming the camera is located at ( 0, 0, z );
-	     target.x = target.x/1.01;
+	     target.x = target.x/1.02;
 	     target.y = target.y/1.03;
     }
     model.lookAt( target );
