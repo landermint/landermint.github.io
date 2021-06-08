@@ -75,20 +75,21 @@ h3 {
 
 var mouseX = 0, mouseY = 0;
 
-var windowHalfX = window.innerWidth / 2;
-var windowHalfY = window.innerHeight / 2;
+
 
 
 
 function someFunction(e){
+	var windowHalfX = window.innerWidth / 2;
+	var windowHalfY = window.innerHeight / 2;
 	if(e.type == 'touchstart' || e.type == 'touchmove' || e.type == 'touchend' || e.type == 'touchcancel'){
 	    var evt = (typeof e.originalEvent === 'undefined') ? e : e.originalEvent;
 	    var touch = evt.touches[0] || evt.changedTouches[0];
-	    mouseX = touch.pageX;
-	    mouseY = touch.pageY;
+	    mouseX = (touch.pageX-windowHalfX);
+	    mouseY = (touch.pageY-windowHalfY);
 	} else if (e.type == 'mousedown' || e.type == 'mouseup' || e.type == 'mousemove' || e.type == 'mouseover'|| e.type=='mouseout' || e.type=='mouseenter' || e.type=='mouseleave') {
-	    mouseX = e.clientX;
-	    mouseY = e.clientY;
+	    mouseX = (e.clientX-windowHalfX);
+	    mouseY = (e.clientY-windowHalfY);
 	}
 }
 
