@@ -84,11 +84,11 @@ function someFunction(e){
 	if(e.type == 'touchstart' || e.type == 'touchmove' || e.type == 'touchend' || e.type == 'touchcancel'){
 	    var evt = (typeof e.originalEvent === 'undefined') ? e : e.originalEvent;
 	    var touch = evt.touches[0] || evt.changedTouches[0];
-	    mousex = touch.pageX;
-	    mousey = touch.pageY;
+	    mouseX = touch.pageX;
+	    mouseY = touch.pageY;
 	} else if (e.type == 'mousedown' || e.type == 'mouseup' || e.type == 'mousemove' || e.type == 'mouseover'|| e.type=='mouseout' || e.type=='mouseenter' || e.type=='mouseleave') {
-	    mousex = e.clientX;
-	    mousey = e.clientY;
+	    mouseX = e.clientX;
+	    mouseY = e.clientY;
 	}
 }
 
