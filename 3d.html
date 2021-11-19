@@ -146,7 +146,7 @@ dracoLoader.setDecoderPath( 'https://threejs.org/examples/js/libs/draco//' )
 loader.setDRACOLoader( dracoLoader );
 
 loader.load(
-"scene.gltf", function (gltf) {
+"poly.glb", function (gltf) {
 
   gltf.scene.traverse(function (node) {
     if (node instanceof THREE.Mesh) {
