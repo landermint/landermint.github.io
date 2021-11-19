@@ -159,6 +159,9 @@ loader.load(
   model = gltf.scene;
   //model.scale.set(.01, .01, .01);
   scene.add(model);
+  var light = new THREE.AmbientLight(0xffffff);
+	scene.add(light);
+
   model.position.y = 1.2;
 
 
