@@ -15,10 +15,29 @@
 			canvas {
 				display: block;
 			}
+			#msk {
+			  position: fixed;
+			  width: 280px;
+			  height: 280px;
+			  margin: 0 auto;
+			      left: 50%;
+    transform: translate(-50%, 0);
+
+			}
+			#msk:before{
+				    content:'';
+			    position:absolute;
+			    bottom:-100%;
+			    width:100%;
+			    height:100%;
+			    border-radius:100%;
+			    box-shadow: 0px 0px 0px 800px #448CCB;
+
+			}
 		</style>
 	</head>
 	<body ontouchstart="">
-
+		<div id="msk"></div>
 		<script type="module">
 
 			import * as THREE from './js/three.module.js';
