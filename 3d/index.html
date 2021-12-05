@@ -72,7 +72,7 @@
 
 			    justify-content: center;
 			width:100%;
-			top: calc(58% - 165px);
+			top: calc(58% - 130px);
 			  z-index: 30;
 			}
 			.flex-container2 {
@@ -82,13 +82,16 @@
 			width:100%;
 			top: 15%;
 			  z-index: 200;
-			  
-			
+			  padding-top:20px;
+			  padding-bottom:20px;
+			background-color: rgba(255, 255, 255, 0.1);
+;
 			  color:white;
 			}
 			.leftright{
 			
 				width:300px;
+
 			}
 			.middle{
 				padding:50px;
@@ -107,8 +110,8 @@
 				flex-shrink: 0;
 			}
 			.myButton {
-				background-color:#212121;
-				border-radius:4px;
+				background-color:#000;
+				border-radius:20px;
 				border:2px solid #ffffff;
 				display:inline-block;
 				cursor:pointer;
@@ -124,18 +127,36 @@
 
 			}
 			.myButton:hover {
-				background-color:#000000;
+				background-color:#212121;
 			}
 			.myButton:active {
 				position:relative;
 				top:1px;
 			}
-						
+						#newmask{
+							position:absolute;
+							height:100%;
+							width:100%;
+							  background-image: url("imgs/bg.jpg");
+							  background-size: cover;
+							  background-position: center;
+							  background-repeat: no-repeat;
+							z-index:10;
+
+							  -webkit-mask-image: url(imgs/newmask_v2.svg);
+							  -webkit-mask-size: 5120px 2880px;
+							  -webkit-mask-repeat: no-repeat;
+							  -webkit-mask-position: 50.3% 61%;
+
+						}
 		</style>
 	</head>
 	<body ontouchstart="">
-		<div id="msk"></div>
-		<section id="loading-screen">
+<!-- 		<div id="msk"></div>
+ -->		
+
+<div id="newmask"></div>
+ <section id="loading-screen">
 
 	<div id="loader"></div>
 
