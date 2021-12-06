@@ -9,6 +9,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+
 		<style>
 			body {
 				font-family: sans-serif;
@@ -286,6 +288,8 @@ $( "body" ).click(function(e) {
 				ctx.lineTo(e.pageX, e.pageY);
 				ctx.stroke();
 */
+						  $( "#canvascontainer" ).effect( "shake", { direction: "left", times: 2, distance: 5} , 200);
+
 					setTimeout(function() {
 							var offset = parseInt($('#canvascontainer').css('top'));
 							var leftEyePos = $( "#eyeposes" ).html().split(",");
@@ -295,6 +299,9 @@ $( "body" ).click(function(e) {
 							var rightEyex = Math.round(rightEyePos[0]);
 							var rightEyey = Math.round(rightEyePos[1])+offset;
 						makeLine(30,leftEyex,leftEyey,rightEyex,rightEyey,currentMousePos.x,currentMousePos.y);
+
+
+
 					},100);
 					
 						
@@ -333,6 +340,7 @@ ctx.shadowColor = '#FD0100';
 }
 		</script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
 	</body>
 </html>
