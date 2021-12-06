@@ -150,17 +150,21 @@
 
 						}
 						#eyeposescontainer{
-							position:absolute;
+							position:fixed;
 							z-index:1000;
 						}
 						#overlaycanvas{
 							margin: 0;
-							position:fixed;
+							position:absolute;
+							z-index:1000;
+							width:100%;
+							height:100%;
+							pointer-events: none;
 						}
 		</style>
 	</head>
 	<body ontouchstart="">
-		<div id="overlaycanvas"><canvas id="myCanvas" width="100%" height="100%"></canvas>
+		<div id="overlaycanvas"><canvas id="myCanvas"></canvas>
 </div>
 <!-- 		<div id="msk"></div>
  -->		
@@ -190,6 +194,8 @@
 		</div>
 		<div id="chunk0"></div>
 		<script type="module">
+var c;
+var ctx;
 
 			import * as THREE from './js/three.module.js';
 			import { APP } from './js/app.js';
@@ -205,7 +211,6 @@
 				player.load( JSON.parse( text ) );
 				player.setSize( window.innerWidth, 750 );
 				player.play();
-
 				document.getElementById("canvascontainer").appendChild( player.dom );
 
 				window.addEventListener( 'resize', function () {
@@ -237,6 +242,7 @@ $( document ).ready(function() {
 });
 */
 
+
 function onTransitionEnd( event ) {
 
 	event.target.remove();
@@ -247,6 +253,69 @@ $("#artbut").click(function() {
     }, 500);
 });
 
+$( document ).ready(function() {
+	c = document.getElementById("myCanvas");
+	ctx = c.getContext("2d");
+
+  ctx.canvas.width  = window.innerWidth;
+  ctx.canvas.height = window.innerHeight;
+
+});
+$(window).bind("resize", function(){
+  ctx.canvas.width  = window.innerWidth;
+  ctx.canvas.height = window.innerHeight;
+
+});
+$( "body" ).click(function(e) {
+	var offset = parseInt($('#canvascontainer').css('top'));
+	var leftEyePos = $( "#eyeposes" ).html().split(",");
+	var rightEyePos = $( "#eyeposes2" ).html().split(",");
+	var leftEyex = Math.round(leftEyePos[0]);
+	var leftEyey = Math.round(leftEyePos[1])+offset;
+	var rightEyex = Math.round(rightEyePos[0]);
+	var rightEyey = Math.round(rightEyePos[1])+offset;
+	  //alert( ""+leftEyex+" "+leftEyey+"" );
+	  /*
+		       					ctx.clearRect(0, 0, c.width, c.height);
+				ctx.beginPath();
+				ctx.moveTo(leftEyex, leftEyey);
+				ctx.lineTo(e.pageX, e.pageY);
+				ctx.stroke();
+*/
+makeLine(30,leftEyex,leftEyey,rightEyex,rightEyey,e.pageX,e.pageY);
+
+
+});
+
+function makeLine(timer,eyeposx,eyeposy,eyeposx2,eyeposy2,mousex,mousey){
+			   // ctx.clearRect(0, 0, c.width, c.height);
+			    if (timer > 0){
+ctx.shadowBlur = 10;
+ctx.shadowColor = '#FD0100';
+
+			    	ctx.strokeStyle = 'rgba(255, 0, 0, '+timer/30+')';
+					ctx.lineWidth = 5;
+
+					ctx.beginPath();
+					ctx.moveTo(eyeposx, eyeposy);
+					ctx.lineTo(mousex, mousey);
+					ctx.stroke();
+					ctx.beginPath();
+					ctx.moveTo(eyeposx2, eyeposy2);
+					ctx.lineTo(mousex, mousey);
+					ctx.stroke();
+					timer-=1;
+					console.log(timer);
+				
+					setTimeout(function() {
+						ctx.clearRect(0, 0, c.width, c.height);
+						makeLine(timer,eyeposx,eyeposy,eyeposx2,eyeposy2,mousex,mousey);
+					},10);
+				}
+
+					//setTimeout(makeLine(timer,eyeposx,eyeposy,mousex,mousey),1000);
+
+}
 		</script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
