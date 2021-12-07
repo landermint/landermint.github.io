@@ -251,6 +251,30 @@ $( document ).ready(function() {
         currentMousePos.y = event.pageY;
     });
 
+                var imageArray = new Array();
+            imageArray[0] = "imgs/exp/1.png";
+            imageArray[1] = "imgs/exp/2.png";
+            imageArray[2] = "imgs/exp/3.png";
+            imageArray[3] = "imgs/exp/4.png";
+            imageArray[4] = "imgs/exp/5.png";
+            imageArray[5] = "imgs/exp/6.png";
+            imageArray[6] = "imgs/exp/7.png";
+            imageArray[7] = "imgs/exp/8.png";
+            imageArray[8] = "imgs/exp/9.png";
+            imageArray[9] = "imgs/exp/10.png";
+            imageArray[10] = "imgs/exp/11.png";
+            imageArray[11] = "imgs/exp/12.png";
+            imageArray[12] = "imgs/exp/13.png";
+            imageArray[13] = "imgs/exp/14.png";
+            imageArray[14] = "imgs/exp/15.png";
+            imageArray[15] = "imgs/exp/16.png";
+            imageArray[16] = "imgs/exp/17.png";
+
+var imges = new Array();
+for (var i = 0; i < imageArray.length; i++){
+	imges[i] = new Image();
+	imges[i].src = imageArray[i]
+}
 
 function onTransitionEnd( event ) {
 
@@ -298,7 +322,7 @@ $( "body" ).click(function(e) {
 							var leftEyey = Math.round(leftEyePos[1])+offset;
 							var rightEyex = Math.round(rightEyePos[0]);
 							var rightEyey = Math.round(rightEyePos[1])+offset;
-						makeLine(30,leftEyex,leftEyey,rightEyex,rightEyey,currentMousePos.x,currentMousePos.y);
+						makeLine(50,leftEyex,leftEyey,rightEyex,rightEyey,currentMousePos.x,currentMousePos.y);
 
 
 
@@ -315,7 +339,7 @@ function makeLine(timer,eyeposx,eyeposy,eyeposx2,eyeposy2,mousex,mousey){
 ctx.shadowBlur = 10;
 ctx.shadowColor = '#FD0100';
 
-			    	ctx.strokeStyle = 'rgba(255, 0, 0, '+timer/30+')';
+			    	ctx.strokeStyle = 'rgba(255, 0, 0, '+scale(timer,0,29,0,1)+')';
 					ctx.lineWidth = 5;
 
 					ctx.beginPath();
@@ -327,8 +351,14 @@ ctx.shadowColor = '#FD0100';
 					ctx.lineTo(mousex, mousey);
 					ctx.stroke();
 					timer-=1;
-					console.log(timer);
-				
+					ctx.shadowBlur = 0;
+
+					var mappednum = Math.floor(scale(timer,49,1,0,16));
+									console.log(mappednum);
+									 ctx.drawImage(imges[mappednum], mousex-90, mousey-126
+									 	,180,252);
+
+
 					setTimeout(function() {
 						ctx.clearRect(0, 0, c.width, c.height);
 						makeLine(timer,eyeposx,eyeposy,eyeposx2,eyeposy2,mousex,mousey);
@@ -337,6 +367,10 @@ ctx.shadowColor = '#FD0100';
 
 					//setTimeout(makeLine(timer,eyeposx,eyeposy,mousex,mousey),1000);
 
+}
+
+function scale (number, inMin, inMax, outMin, outMax) {
+    return (number - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
 }
 		</script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
