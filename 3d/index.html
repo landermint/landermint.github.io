@@ -10,6 +10,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js"></script>
+
 
 		<style>
 			body {
@@ -165,6 +167,7 @@
 							pointer-events: none;
 						}
 		</style>
+
 	</head>
 	<body ontouchstart="">
 		<div id="overlaycanvas"><canvas id="myCanvas"></canvas>
@@ -203,11 +206,18 @@ var ctx;
 			import * as THREE from './js/three.module.js';
 			import { APP } from './js/app.js';
 			import { VRButton } from './js/VRButton.js';
+			import { ZipLoader } from './js/ZipLoader.js';
+			import { ZipLoadingManager } from './js/ZipLoadingManager.js';
 
 			window.THREE = THREE; // Used by APP Scripts.
 			window.VRButton = VRButton; // Used by APP Scripts.
 
 			var loader = new THREE.FileLoader();
+
+
+
+
+
 			loader.load( 'app.json', function ( text ) {
 
 				var player = new APP.Player();
