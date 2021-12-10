@@ -6,6 +6,8 @@
 		<meta name="generator" content="Three.js Editor">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link rel="stylesheet" type="text/css" href="loader.css">
+		<script src="https://kit.fontawesome.com/7d795e618e.js" crossorigin="anonymous"></script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap" rel="stylesheet">
@@ -40,7 +42,7 @@
 			  height: 280px;
 			  margin: 0 auto;
 			      left: 50%;
-			      top: calc(58% - 140px);
+			      top: calc(54% - 140px);
 
     			transform: translate(-50%, 0);
 
@@ -57,7 +59,7 @@
 			}
 			#canvascontainer{
 				  position: absolute;
-  					top: calc(58% - 375px);
+  					top: calc(54% - 375px);
 			}
 			#chunk0{
 				position:absolute;
@@ -73,6 +75,7 @@
 				position:absolute;
 			  display: flex;
 			  color:white;
+			  visibility: hidden;
 
 			    justify-content: center;
 			width:100%;
@@ -84,11 +87,12 @@
 			  display: flex;
 			 justify-content: center;
 			width:100%;
-			top: 15%;
+			top: 8%;
+			font-size:3em;
 			  z-index: 200;
 			  padding-top:20px;
 			  padding-bottom:20px;
-			background-color: rgba(255, 255, 255, 0.1);
+			background-color: rgba(0, 0, 0, 0.3);
 ;
 			  color:white;
 			}
@@ -97,16 +101,9 @@
 				width:300px;
 
 			}
-			.middle{
-				padding:50px;
-				text-align: center;
 
-				flex-basis: 280px;
-				flex-grow: 0;
-				flex-shrink: 0;
-			}
 			.middle{
-
+				padding:45px;
 								text-align: center;
 
 				flex-basis: 280px;
@@ -150,11 +147,12 @@
 							  -webkit-mask-image: url(imgs/newmask_v2.svg);
 							  -webkit-mask-size: 5120px 2880px;
 							  -webkit-mask-repeat: no-repeat;
-							  -webkit-mask-position: 50.3% 61%;
+							  -webkit-mask-position: 50.3% 63%;
 
 						}
 						#eyeposescontainer{
 							position:fixed;
+							display:none;
 							z-index:1000;
 							color:white;
 						}
@@ -186,9 +184,9 @@
 
 </section>
 		<div class="flex-container2">
-		  <div class="leftright" style="text-align: right; right:20px; position:relative;"><a href="#" id="artbut" class="myButton">Art</a></div>
-		  <div class="middle2"><a href="#" class="myButton">Web</a></div>
-		  <div class="leftright" style="text-align: left; left:20px; position:relative;"><a href="#" class="myButton">Games</a></div>
+		  <div class="leftright" style="text-align: right; right:35px; position:relative;"><i class="fas fa-photo-video"></i></div>
+		  <div class="middle2"><i class="fas fa-wifi"></i></div>
+		  <div class="leftright" style="text-align: left; left:35px; position:relative;"><i class="fas fa-gamepad"></i></div>
 		</div>
 		<div id="canvascontainer">
 		</div>
