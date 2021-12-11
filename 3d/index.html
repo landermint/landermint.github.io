@@ -75,33 +75,42 @@
 				position:absolute;
 			  display: flex;
 			  color:white;
-			  visibility: hidden;
-
+			  left:-140px;
 			    justify-content: center;
 			width:100%;
 			top: calc(58% - 130px);
 			  z-index: 30;
+
 			}
 			.flex-container2 {
 				position:absolute;
 			  display: flex;
 			 justify-content: center;
-			width:100%;
-			top: 8%;
+			width:calc(100%);
 			font-size:2em;
 			  z-index: 200;
 			  padding-top:20px;
 			  padding-bottom:20px;
+
 			background-color: rgba(0, 0, 0, 0.3);
 			text-align:center;
 			  color:white;
+
+			}
+
+			.extendmargins{
+				  /* add back negative margin value */
+
 			}
 			.leftright{
-			
+				
 				width:125px;
 
 			}
+			.frontText{
 
+				width:350px;
+			}
 			.middle{
 				padding:45px;
 								text-align: center;
@@ -120,7 +129,7 @@
 				font-size:25px;
 				font-weight: : 700;
 				padding:8px 17px;
-			
+				padding-left:1000px;
 				text-decoration:none;
 				text-align: center;
 				width:100px;
@@ -145,9 +154,11 @@
 							z-index:10;
 
 							  -webkit-mask-image: url(imgs/newmask_v2.svg);
-							  -webkit-mask-size: 5120px 2880px;
+							  -webkit-mask-size: 4000px 2250px;
 							  -webkit-mask-repeat: no-repeat;
-							  -webkit-mask-position: 50.3% 63%;
+							  -webkit-mask-position-x: calc(50.3%);
+							  -webkit-mask-position-y: 64%;
+							  /*-webkit-mask-position: calc(50.3%) 63%;*/
 
 						}
 						#eyeposescontainer{
@@ -164,6 +175,69 @@
 							height:100%;
 							pointer-events: none;
 						}
+						@media only screen and (min-width: 900px) {
+							.flex-container2 {
+								left:-400px;
+								padding-left:600px;
+											top: 8%;
+
+							}
+							#newmask{
+								/*-webkit-mask-position: calc(50.3% + 200px) 65%;*/
+								-webkit-mask-position-y: calc(54% - 140px);
+								-webkit-mask-position-x: calc(50.3% + 200px);
+							}
+							#canvascontainer{
+								left:200px;
+								top: calc(54% - 375px);
+
+							}
+
+						}
+						@media only screen and (max-width: 900px) {
+							#titleText {
+							  left: 0px !important;
+							  top:100px !important;
+							  text-align: center;
+							}
+							.frontText{
+								visibility: hidden;
+							}
+														#newmask{
+								/*-webkit-mask-position: calc(50.3% + 200px) 65%;*/
+								-webkit-mask-position-y: calc(54% - 100px);
+								-webkit-mask-position-x: calc(50.3%);
+							}
+							#canvascontainer{
+								top: calc(54% - 338px);
+
+							}
+
+						}
+						#titleText {
+								position:absolute;
+							  display: flex;
+							 justify-content: center;
+							width:calc(100%);
+							top: 8%;
+							font-size:2em;
+							  z-index: 300;
+							  padding-top:20px;
+							  padding-bottom:20px;
+							  left:-140px;
+							  color:white;
+							  pointer-events: none;
+
+							}
+
+						.titlediv{
+							width:350px;
+						}
+						.subtitlediv{
+							font-size:0.5em;
+							margin-top:7px;
+						}
+
 		</style>
 
 	</head>
@@ -183,18 +257,20 @@
 	<div id="loader"></div>
 
 </section>
+<div class="extendmargins">
+	<div id="titleText"><div class="titlediv">Jack Lambermont<br><div class="subtitlediv">Web Development & New Media</div></div></div>
 		<div class="flex-container2">
+
 		  <div class="leftright" style="text-align: center; right:0px; position:relative;"><i class="fas fa-film"></i><br><div style="font-size:0.5em !important; margin-top:7px">Media</div></div>
 		  <div class="middle2"><i class="fas fa-wifi"></i><br><div style="font-size:0.5em !important; margin-top:7px">Web</div></div>
 		  <div class="leftright" style="text-align: center; left:0px; position:relative;"><i class="fas fa-gamepad"></i><br><div style="font-size:0.5em !important; margin-top:7px">Games</div></div>
 		</div>
+</div>
 		<div id="canvascontainer">
 		</div>
 
 		<div class="flex-container">
-		  <div class="leftright" style="text-align: right"><h1>asdasdf</h1>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto</div>
-		  <div class="middle"></div>
-		  <div class="leftright"><h1>asdasdf</h1>consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur</div>
+		  <div class="frontText" style=""><h1>asdasdf</h1>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto</div>
 		</div>
 		<div id="chunk0"></div>
 		<script type="module">
@@ -255,6 +331,7 @@ $( document ).ready(function() {
 
     var currentMousePos = { x: -1, y: -1 };
     $(document).mousemove(function(event) {
+
         currentMousePos.x = event.pageX;
         currentMousePos.y = event.pageY;
     });
@@ -330,8 +407,15 @@ $( "body" ).click(function(e) {
 							var leftEyey = Math.round(leftEyePos[1])+offset;
 							var rightEyex = Math.round(rightEyePos[0]);
 							var rightEyey = Math.round(rightEyePos[1])+offset;
-						makeLine(50,leftEyex,leftEyey,rightEyex,rightEyey,currentMousePos.x,currentMousePos.y);
 
+							if (window.innerWidth > 900){
+								makeLine(50,leftEyex+200,leftEyey,rightEyex+200,rightEyey,currentMousePos.x,currentMousePos.y);
+							} else {
+								makeLine(50,leftEyex,leftEyey,rightEyex,rightEyey,currentMousePos.x,currentMousePos.y);
+
+							}
+
+							
 
 
 					},100);
@@ -344,8 +428,8 @@ $( "body" ).click(function(e) {
 function makeLine(timer,eyeposx,eyeposy,eyeposx2,eyeposy2,mousex,mousey){
 			   // ctx.clearRect(0, 0, c.width, c.height);
 			    if (timer > 0){
-ctx.shadowBlur = 10;
-ctx.shadowColor = '#FD0100';
+				ctx.shadowBlur = 10;
+				ctx.shadowColor = '#FD  0100';
 
 			    	ctx.strokeStyle = 'rgba(255, 0, 0, '+scale(timer,0,29,0,1)+')';
 					ctx.lineWidth = 5;
