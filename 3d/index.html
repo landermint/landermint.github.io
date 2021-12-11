@@ -390,12 +390,23 @@ $( document ).ready(function() {
   ctx.canvas.width  = window.innerWidth;
   ctx.canvas.height = window.innerHeight;
 
+  adjustforscroll();
+
 });
 $(window).bind("resize", function(){
   ctx.canvas.width  = window.innerWidth;
   ctx.canvas.height = window.innerHeight;
+  adjustforscroll();
 
 });
+function adjustforscroll(){
+if (/Mobi|Android/i.test(navigator.userAgent)) {
+	  		  $("#canvascontainer").css("left","10px;");
+}
+
+
+
+}
 $( "body" ).click(function(e) {
 
 	  //alert( ""+leftEyex+" "+leftEyey+"" );
