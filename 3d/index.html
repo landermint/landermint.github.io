@@ -28,7 +28,7 @@
 
 		h1 {
 			display: block;
-			font-size: 2em;
+			font-size: 1.6em;
 			font-weight: 300;
 		}
 
@@ -62,10 +62,11 @@
 
 		#chunk0 {
 			position: absolute;
-			height: 600px;
 			width: 100%;
 			z-index: 30;
-			background-color: #212121;
+			background-color: #03050f;
+			padding-top:100px;
+			padding-bottom:20px;
 		}
 
 		.myButton {
@@ -114,8 +115,7 @@
 			background-color: rgba(0, 0, 0, 0.3);
 			text-align: center;
 			color: white;
-			transition: background-color 0.5s ease;
-			transition: height 0.5s ease;
+			transition: height 0.2s ease;
 			height: 93px;
 		}
 
@@ -160,8 +160,7 @@
 			-webkit-mask-image: url(imgs/newmask_v2.svg);
 			-webkit-mask-size: 4000px 2250px;
 			-webkit-mask-repeat: no-repeat;
-			-webkit-mask-position-x: calc(50.3%);
-			-webkit-mask-position-y: 64%;
+
 			/*-webkit-mask-position: calc(50.3%) 63%;*/
 		}
 
@@ -203,6 +202,27 @@
 			.subtitlediv {
 				margin-top: 7px;
 			}
+			.flex-container{
+				top:275px;
+			}
+			@media only screen and (max-height: 750px) {
+				.flex-container{
+					align-items: center;
+			  		height: 100%;
+			  		top:0px;
+				}
+				#newmask {
+					height: 100%;
+					/*-webkit-mask-position: calc(50.3% + 200px) 65%;*/
+					-webkit-mask-position-y: calc(54% - 150px) !important;
+				}
+					#chunk0 {
+						top: 100%;
+					}
+					#canvascontainer {
+						top: calc(54% - 388px);
+					}
+			}
 		}
 
 		@media only screen and (max-width: 900px) {
@@ -210,9 +230,12 @@
 				margin-top: 1px;
 			}
 			#titleText {
+				position:absolute !important;
 				left: 0px !important;
 				top: 100px !important;
 				text-align: center;
+							z-index: 195;
+
 			}
 			.frontText {
 				visibility: hidden;
@@ -269,6 +292,84 @@
 			background-color: rgba(0, 0, 0, 0.7);
 			height: 58px;
 		}
+		.project{
+			position:relative;
+			/*top: 100px;*/
+			width:800px;
+			height: 450px;
+ 			 border-top: 1px solid rgba(31, 46, 110);
+
+		}
+			img{
+				height:calc(100% - 10px);
+				width:auto;
+				padding: 10px;
+
+			}
+			.prjimg{
+
+				position:absolute;
+				width:100%;
+				height:100%;	
+				text-align: right;
+			}
+			.overlayimg{
+				opacity:0;
+
+				transition: opacity 0.5s ease;
+			}
+			.opacityclass{
+				opacity:1 !important;
+			}
+			.projectText{
+				position:absolute;
+				color:white;
+				background-color: rgba(10, 19, 54, 0.82);
+				z-index:10;
+				top:35px;
+				padding:20px;
+				left:10px;
+				width:550px;
+			}
+				@media only screen and (min-width: 900px) {
+						.project{
+										left:calc(50% - 400px);
+
+						}
+					}
+					@media only screen and (max-width: 900px) {
+
+						.project{
+							position:relative;
+							/*top: 100px;*/
+							width:100%;
+							
+							height: 450px;
+
+
+						}
+						img{
+							max-height:calc(100% - 10px);
+							max-width: calc(100% - 20px);
+							width:auto;
+							height:auto;
+							padding: 10px;
+						}
+						.projectText{
+							position:absolute;
+							color:white;
+							background-color: rgba(10, 19, 54, 0.82);
+							z-index:10;
+							top:10px;
+							padding:20px;
+							left:10px;
+							width:calc(100% - 60px);
+							font-size:0.85em;
+						}
+						.projectText a{
+							font-size:0.85em !important;
+						}
+					}
       </style>
    </head>
    <body ontouchstart="">
@@ -290,11 +391,11 @@
          <div id="titleText">
             <div class="titlediv">
                Jack Lambermont<br>
-               <div class="subtitlediv hideonscroll">Web Development & New Media</div>
+               <div class="subtitlediv">Web Development & New Media</div>
             </div>
          </div>
          <div class="flex-container2">
-            <div class="leftright">
+            <div  id="artbut" class="leftright">
                <i class="fas fa-wifi"></i><br>
                <div class="hideonscroll" style="font-size:0.5em !important; margin-top:7px">Web</div>
             </div>
@@ -302,7 +403,7 @@
                <i class="fas fa-gamepad"></i><br>
                <div class="hideonscroll" style="font-size:0.5em !important; margin-top:7px">Games</div>
             </div>
-            <div id="artbut" class="leftright" style="text-align: center; right:0px; position:relative;">
+            <div  class="leftright" style="text-align: center; right:0px; position:relative;">
                <i class="fas fa-film"></i><br>
                <div class="hideonscroll" style="font-size:0.5em !important; margin-top:7px">Media</div>
             </div>
@@ -316,7 +417,16 @@
             <p><a href="mailto:jack.lambermont@gmail.com" class="myButton">jack.lambermont@gmail.com</a></p>
          </div>
       </div>
-      <div id="chunk0"></div>
+      <div id="chunk0">
+      	<div class="project">
+      		<div class="projectText"><h1>Fusion Flasks engraving tool</h1>This web application allows customers to customize their engraving on this novelty flask. When the customer completes their purchase, the tool sends an .SVG file to the company which is used as the basis for the custom engraving.<br><br><a href="#" class="myButton">Demo</a> <a href="#" class="myButton" style="margin-left:20px !important">fusionflasks.com</a></div>
+      		<div class="prjimg"><img src="imgs/pj1_inv.png"></div><div class="prjimg overlayimg"><img src="imgs/pj1.png"></div>
+      	</div><div style="height:50px"></div>
+      	      	<div class="project">
+      		<div class="projectText"><h1>Innerlinks Wordpress Site</h1>Wordpress website for professional psychologist in Mississauga, Ontario<br><br><a href="#" class="myButton">innerlinks.ca</a></div>
+      		<div class="prjimg"><img src="imgs/pj2_inv.jpg"></div><div class="prjimg overlayimg"><img src="imgs/pj2.jpg"></div>
+      	</div>
+      </div>
       <script type="module">
          var c;
          var ctx;
@@ -394,6 +504,12 @@
          function onTransitionEnd(event) {
              event.target.remove();
          }
+         $( ".project" ).mouseover(function() {
+         	$( this ).find( ".overlayimg" ).addClass("opacityclass");
+		});
+        $( ".project" ).mouseleave(function() {
+         	$( this ).find( ".overlayimg" ).removeClass("opacityclass");
+		});
          $("#artbut").click(function() {
              setTimeout(function() {
                  $('html, body').animate({
@@ -410,24 +526,10 @@
              }, 500);
          });
          $(window).scroll(function() {
-             if ($(window).scrollTop() > 0) {
-                 $(".hideonscroll").addClass("hideboy");
-                 $(".flex-container2").addClass("newbg");
-                 if (window.innerWidth <= 900) {
-                     $(".titlediv").addClass("hideboy");
-                 }
-             } else {
-                 $(".hideonscroll").removeClass("hideboy");
-                 $(".flex-container2").removeClass("newbg");
-                 $(".titlediv").removeClass("hideboy");
-             }
+			hideDivs();
          });
          $(document).ready(function() {
-             if ($(window).scrollTop() > 0) {
-                 $(".hideonscroll").addClass("hideboy");
-             } else {
-                 $(".hideonscroll").removeClass("hideboy");
-             }
+         		hideDivs();
              c = document.getElementById("myCanvas");
              ctx = c.getContext("2d");
              ctx.canvas.width = window.innerWidth;
@@ -438,6 +540,20 @@
              }
              adjustforscroll();
          });
+         function hideDivs(){
+         	             if ($(window).scrollTop() > 0) {
+                 $(".hideonscroll").addClass("hideboy");
+                 $(".flex-container2").addClass("newbg");
+                 if (window.innerWidth >= 900) {
+                     //$(".titlediv").addClass("hideboy");
+                     $(".subtitlediv").addClass("hideboy");
+                 }
+             } else {
+                 $(".hideonscroll").removeClass("hideboy");
+                 $(".flex-container2").removeClass("newbg");
+                  $(".subtitlediv").removeClass("hideboy");
+             }
+         }
          $(window).bind("resize", function() {
              ctx.canvas.width = window.innerWidth;
              if (window.innerWidth > 900) {
@@ -488,7 +604,8 @@
                  ctx.shadowBlur = 10;
                  ctx.shadowColor = '#FD  0100';
                  ctx.strokeStyle = 'rgba(255, 0, 0, ' + scale(timer, 0, 29, 0, 1) + ')';
-                 ctx.lineWidth = 5;
+                 ctx.lineWidth = 3.5;
+                 ctx.lineCap = "round";
                  ctx.beginPath();
                  ctx.moveTo(eyeposx, eyeposy);
                  ctx.lineTo(mousex, mousey);
