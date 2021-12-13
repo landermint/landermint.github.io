@@ -179,8 +179,11 @@
 			height: 100%;
 			pointer-events: none;
 		}
-
+			.divider{
+				height:50px;
+			}
 		@media only screen and (min-width: 900px) {
+
 			.flex-container2 {
 				left: -300px;
 				padding-left: 600px;
@@ -227,7 +230,7 @@
 
 		@media only screen and (max-width: 900px) {
 			.subtitlediv {
-				margin-top: 1px;
+				margin-top: -1px;
 			}
 			#titleText {
 				position:absolute !important;
@@ -336,6 +339,9 @@
 										left:calc(50% - 400px);
 
 						}
+						#mobileLinkContainer{
+							display:none;
+						}
 					}
 					@media only screen and (max-width: 900px) {
 
@@ -344,12 +350,12 @@
 							/*top: 100px;*/
 							width:100%;
 							
-							height: 450px;
+							height: auto;
 
 
 						}
 						img{
-							max-height:calc(100% - 10px);
+							/*max-height:calc(100% - 20px);*/
 							max-width: calc(100% - 20px);
 							width:auto;
 							height:auto;
@@ -367,12 +373,33 @@
 							font-size:0.85em;
 						}
 						.projectText a{
-							font-size:0.85em !important;
+							font-size:1.1em !important;
+							padding: 6px 12px;
 						}
+						.prjimg{
+							text-align: left;
+							overflow:hidden;
+						}
+
+						#mobileLinkContainer{
+							bottom:30px;
+							width:100%;
+							text-align:center;
+							position:absolute;
+							z-index: 195;
+						}
+						#mobileLink{
+							padding:2px 10px !important;
+							font-size:0.95em;
+							  text-decoration: none;
+							  color: #c9d7ff;
+						}
+
 					}
       </style>
    </head>
    <body ontouchstart="">
+   	<div id="mobileLinkContainer"><a id="mobileLink" href="mailto:jack.lambermont@gmail.com">jack.lambermont@gmail.com</a></div>
       <div id="overlaycanvas">
          <canvas id="myCanvas"></canvas>
       </div>
@@ -421,7 +448,7 @@
       	<div class="project">
       		<div class="projectText"><h1>Fusion Flasks engraving tool</h1>This web application allows customers to customize their engraving on this novelty flask. When the customer completes their purchase, the tool sends an .SVG file to the company which is used as the basis for the custom engraving.<br><br><a href="#" class="myButton">Demo</a> <a href="#" class="myButton" style="margin-left:20px !important">fusionflasks.com</a></div>
       		<div class="prjimg"><img src="imgs/pj1_inv.png"></div><div class="prjimg overlayimg"><img src="imgs/pj1.png"></div>
-      	</div><div style="height:50px"></div>
+      	</div><div class="divider"></div>
       	      	<div class="project">
       		<div class="projectText"><h1>Innerlinks Wordpress Site</h1>Wordpress website for professional psychologist in Mississauga, Ontario<br><br><a href="#" class="myButton">innerlinks.ca</a></div>
       		<div class="prjimg"><img src="imgs/pj2_inv.jpg"></div><div class="prjimg overlayimg"><img src="imgs/pj2.jpg"></div>
@@ -535,9 +562,17 @@
              ctx.canvas.width = window.innerWidth;
              if (window.innerWidth > 900) {
                  ctx.canvas.height = 750;
+                 $( ".project" ).each(function( i ) {
+                	 $(this).css("height","");
+ 				 });
              } else {
                  ctx.canvas.height = window.innerHeight;
+
+                 $( ".project" ).each(function( i ) {
+                	 $(this).css("height",""+($(this).find(".projectText").outerHeight())+"px");
+ 				 });
              }
+
              adjustforscroll();
          });
          function hideDivs(){
@@ -558,7 +593,13 @@
              ctx.canvas.width = window.innerWidth;
              if (window.innerWidth > 900) {
                  ctx.canvas.height = 750;
+                 $( ".project" ).each(function( i ) {
+                	 $(this).css("height","");
+ 				 });
              } else {
+                 $( ".project" ).each(function( i ) {
+                	 $(this).css("height",""+($(this).find(".projectText").outerHeight())+"px");
+ 				 });
                  ctx.canvas.height = window.innerHeight;
              }
              adjustforscroll();
