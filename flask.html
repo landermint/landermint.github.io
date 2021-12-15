@@ -359,6 +359,9 @@
             display:inline-block;
           }
     }
+    #bottomsection{
+      line-height:50px;
+    }
 
     </style>
 
@@ -1342,6 +1345,20 @@ function openAccords() {
 var leftside = "right";
 var rightside = "left";
 $(document).ready(function() {
+        openAccords();
+        winwidth = $(this).width();
+         if ($(this).width() > 900) {
+            $("#bottomsection").css("width","228");
+            $("#bottomsection").css("line-height","2");
+            $("#bottomsection").css("text-align","left");
+            $("#bottomsection").appendTo("#controls");
+          } else {
+            $("#bottomsection").css("line-height","1.8");
+
+            $("#bottomsection").css("width","auto");
+            $("#bottomsection").css("text-align","center");
+            $("#bottomsection").appendTo("#everythingcontainer");
+        }
 
 
 
@@ -1357,18 +1374,7 @@ $(document).ready(function() {
     // e.t.c.
   }
 });
-	        winwidth = $(this).width();
-         if ($(this).width() > 900) {
-            $("#bottomsection").css("width","228");
-            $("#bottomsection").css("line-height","2");
-            $("#bottomsection").css("text-align","left");
-            $("#bottomsection").appendTo("#controls");
-          } else {
-            $("#bottomsection").css("line-height","normal");
-            $("#bottomsection").css("width","auto");
-            $("#bottomsection").css("text-align","center");
-            $("#bottomsection").appendTo("#everythingcontainer");
-        }
+
 
     setTimeout(function() { // wait 1ms to ensure select2 script is executed first
 		openAccords();
@@ -1542,7 +1548,7 @@ $( "#showcode" ).click(function() {
 
 
 </div>
-<div id="bottomsection" style="padding:18px;"><a href="#test-popup" id="showcode" style="margin-top:10px; font-size:14px !important; text-decoration: none;" class="controlbutton open-popup-link">SUBMIT FORM</a><br><br> <a href="#video-popup" onclick="document.getElementById('videe').play();"  style=" margin-top:10px; font-size:10px !important; text-decoration: none;" id="showvid" class="controlbutton open-popup-link">SHOW VIDEO</a></div>
+<div id="bottomsection" style="padding:18px;"><a href="#test-popup" id="showcode" style="margin-top:10px; font-size:14px !important; text-decoration: none;" class="controlbutton open-popup-link">SUBMIT FORM</a><p><a href="#video-popup" onclick="document.getElementById('videe').play();"  style=" margin-top:10px; font-size:10px !important; text-decoration: none;" id="showvid" class="controlbutton open-popup-link">SHOW VIDEO</a></p></div>
 
 <div id="test-popup" class="white-popup mfp-hide">
 	<center>
