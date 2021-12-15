@@ -583,12 +583,12 @@
          	 if (currentMousePos.y < ($("#newmask").position().top + $("#newmask").outerHeight(true))){
 	             setTimeout(function() {
 	                 $('html, body').animate({
-	                     scrollTop: $("#chunk0").offset().top
+	                     scrollTop: $("#chunk0").offset().top-20
 	                 }, 500);
 	             }, 500);
          	} else {
          			 $('html, body').animate({
-	                     scrollTop: $("#chunk0").offset().top
+	                     scrollTop: $("#chunk0").offset().top-20
 	                 }, 500);
          	}
          });
@@ -596,12 +596,12 @@
          	 if (currentMousePos.y < ($("#newmask").position().top + $("#newmask").outerHeight(true))){
 	             setTimeout(function() {
 	                 $('html, body').animate({
-	                     scrollTop: $("#chunk1").offset().top
+	                     scrollTop: $("#chunk1").offset().top-20
 	                 }, 500);
 	             }, 500);
 	         } else {
 	            $('html, body').animate({
-	                 scrollTop: $("#chunk1").offset().top
+	                 scrollTop: $("#chunk1").offset().top-20
 	            }, 500);
 	         }
          });
