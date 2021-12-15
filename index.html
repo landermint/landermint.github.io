@@ -425,7 +425,7 @@
       </style>
    </head>
    <body ontouchstart="">
-   	<div id="mobileLinkContainer"><a id="mobileLink" href="mailto:jack.lambermont@gmail.com">jack.lambermont@gmail.com</a></div>
+   	<div id="mobileLinkContainer"><a class="emailbut" id="mobileLink" href="javascript:void(0)">jack.lambermont@gmail.com</a></div>
       <div id="overlaycanvas">
          <canvas id="myCanvas"></canvas>
       </div>
@@ -467,12 +467,12 @@
       <div class="flex-container">
          <div class="frontText" style="">
             <p>I work with JavaScript and C# to make websites, web applications and games</p>
-            <p><a href="mailto:jack.lambermont@gmail.com" class="myButton">jack.lambermont@gmail.com</a></p>
+            <p><a id="emailbuttondesktop" href="javascript:void(0)" class="myButton">jack.lambermont@gmail.com</a></p>
          </div>
       </div>
       <div id="chunk0">
       	<div class="project">
-      		<div class="projectText"><h1>Fusion Flasks engraving tool</h1>This Squarespace integrated web application allows customers to create a customized engraving for their flask. Users create the design with my custom UI, and the tool generates a .svg file that is emailed to the company when the purchase is finalized. Check out the demo to see how it works. While the mobile version is fully functional, the desktop version provides a better experience.<br><br><a href="#" class="myButton">Demo</a> <a href="https://fusionflasks.com/" target="_blank" class="myButton" style="margin-left:20px !important">fusionflasks.com</a></div>
+      		<div class="projectText"><h1>Fusion Flasks engraving tool</h1>This Squarespace integrated web application allows customers to create a customized engraving for their flask. Users create the design with my custom UI, and the tool generates a .svg file that is emailed to the company when the purchase is finalized. Check out the demo to see how it works. While the mobile version is fully functional, the desktop version provides a better experience.<br><br><a href="flask.html" class="myButton">Demo</a> <a href="https://fusionflasks.com/" target="_blank" class="myButton" style="margin-left:20px !important">fusionflasks.com</a></div>
       		<div class="prjimg"><img src="imgs/pj1_inv.png"></div><div class="prjimg overlayimg"><img src="imgs/pj1.png"></div>
       	</div><div class="divider"></div>
       	      	<div class="project">
@@ -580,27 +580,56 @@
          	$( this ).find( ".overlayimg" ).removeClass("opacityclass");
 		});
          $("#artbut").click(function() {
-             setTimeout(function() {
-                 $('html, body').animate({
-                     scrollTop: $("#chunk0").offset().top
-                 }, 500);
-             }, 500);
+         	 if (currentMousePos.y < ($("#newmask").position().top + $("#newmask").outerHeight(true))){
+	             setTimeout(function() {
+	                 $('html, body').animate({
+	                     scrollTop: $("#chunk0").offset().top
+	                 }, 500);
+	             }, 500);
+         	} else {
+         			 $('html, body').animate({
+	                     scrollTop: $("#chunk0").offset().top
+	                 }, 500);
+         	}
          });
          $("#resbut").click(function() {
-             setTimeout(function() {
-                 $('html, body').animate({
-                     scrollTop: $("#chunk1").offset().top
-                 }, 500);
-             }, 500);
+         	 if (currentMousePos.y < ($("#newmask").position().top + $("#newmask").outerHeight(true))){
+	             setTimeout(function() {
+	                 $('html, body').animate({
+	                     scrollTop: $("#chunk1").offset().top
+	                 }, 500);
+	             }, 500);
+	         } else {
+	            $('html, body').animate({
+	                 scrollTop: $("#chunk1").offset().top
+	            }, 500);
+	         }
          });
          $("#gamesbut").click(function() {
-             setTimeout(function() {
-                 window.open(
-                     'https://landermint.itch.io/',
-                     '_blank' // <- This is what makes it open in a new window.
-                 );
-             }, 500);
+         	 if (currentMousePos.y < ($("#newmask").position().top + $("#newmask").outerHeight(true))){
+	             setTimeout(function() {
+	                 window.open(
+	                     'https://landermint.itch.io/',
+	                     '_blank' // <- This is what makes it open in a new window.
+	                 );
+	             }, 500);
+	         } else {
+	             window.open(
+	                'https://landermint.itch.io/',
+	             	'_blank' // <- This is what makes it open in a new window.
+	             );
+	         }
          });
+         $(".emailbut, #emailbuttondesktop").click(function() {
+         	 if (currentMousePos.y < ($("#newmask").position().top + $("#newmask").outerHeight(true))){
+	             setTimeout(function() {
+					window.open('mailto:jack.lambermont@gmail.com');
+	             }, 500);
+	         } else {
+					window.open('mailto:jack.lambermont@gmail.com');
+
+	         }
+         })
          $(window).scroll(function() {
 			hideDivs();
          });
