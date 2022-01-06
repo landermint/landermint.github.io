@@ -1344,8 +1344,12 @@ function openAccords() {
 }
 var leftside = "right";
 var rightside = "left";
-$(document).ready(function() {
+window.onload = function() {
         openAccords();
+
+};
+
+$(document).ready(function() {
         winwidth = $(this).width();
          if ($(this).width() > 900) {
             $("#bottomsection").css("width","228");

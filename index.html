@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
-      <title>Jack Lambermont</title>
+      <title>Jack Lambermont - Portfolio</title>
       <meta charset="utf-8">
       <meta name="generator" content="Three.js Editor">
       <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
@@ -13,476 +13,10 @@
       <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
       <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js"></script>
       <link href="https://fonts.googleapis.com/css2?family=Prompt&family=Quicksand:wght@300;400&display=swap" rel="stylesheet">
-      <style>
-         body {
-			font-family: sans-serif;
-			font-size: 11px;
-			background-color: #fff;
-			margin: 0px;
-			overflow-x: hidden;
-			font-size: 1em;
-			font-weight: 300;
-			font-family: 'Quicksand', sans-serif;
-			line-height: 1.8;
-		}
-
-		h1 {
-			display: block;
-			font-size: 1.6em;
-			font-weight: 300;
-		}
-
-		canvas {
-			display: block;
-		}
-
-		#msk {
-			z-index: 10;
-			position: absolute;
-			width: 280px;
-			height: 280px;
-			margin: 0 auto;
-			left: 50%;
-			top: calc(54% - 140px);
-			transform: translate(-50%, 0);
-		}
-
-		#msk:before {
-			content: '';
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			border-radius: 100%;
-			box-shadow: 0px 0px 0px 800px #000;
-		}
-
-		#canvascontainer {
-			position: absolute;
-		}
-
-		#chunk0 {
-			position: absolute;
-			width: 100%;
-			z-index: 30;
-			background-color: #03050f;
-			padding-top:100px;
-			padding-bottom:45px;
-		}
-		#chunk1 {
-			position: relative;
-			width:100%;
-			z-index: 30;
-			background-color: #0d1e30;
-			padding-top:68px;
-			top:45px;
-			color:white;
-			text-align:center;
-						padding-bottom:45px;
-
-						line-height: 1.4;
-
-		}
-		#resumeContainer{
-						width: calc(100% - 30px);
-									display:inline-block;
-									left:15px;
-
-
-		}
-		.myButton {
-			background-color: rgba(0, 0, 0, 0.0);
-			border: 2px solid #fff;
-			display: inline-block;
-			cursor: pointer;
-			color: #ffffff;
-			font-size: 17px;
-			padding: 12px 24px;
-			text-decoration: none;
-			text-shadow: 0px 1px 0px #2f6627;
-			transition: background-color 0.5s ease;
-		}
-
-		.myButton:hover {
-			background-color: rgba(0, 0, 0, 0.5);
-		}
-
-		.myButton:active {
-			position: relative;
-			top: 1px;
-		}
-
-		.flex-container {
-			position: absolute;
-			display: flex;
-			color: white;
-			left: -195px;
-			justify-content: center;
-			width: 100%;
-			top: 275px;
-			z-index: 30;
-			font-size: 1.5em;
-		}
-
-		.flex-container2 {
-			position: fixed;
-			display: flex;
-			justify-content: center;
-			width: calc(100%);
-			font-size: 2em;
-			z-index: 200;
-			padding-top: 20px;
-			padding-bottom: 20px;
-			background-color: rgba(0, 0, 0, 0.3);
-			text-align: center;
-			color: white;
-			transition: height 0.2s ease;
-			height: 93px;
-		}
-
-		.extendmargins {
-			/* add back negative margin value */
-		}
-
-		.leftright {
-			cursor: pointer;
-			width: 80px;
-			transition: background-color 0.5s ease;
-		}
-
-		.leftright:hover {
-			cursor: pointer;
-			width: 80px;
-			background-color: rgba(0, 0, 0, 0.5);
-		}
-
-		.middle2 {}
-
-		.frontText {
-			width: 450px;
-		}
-
-		.middle {
-			padding: 45px;
-			text-align: center;
-			flex-basis: 280px;
-			flex-grow: 0;
-			flex-shrink: 0;
-		}
-
-		#newmask {
-			position: absolute;
-			width: 100%;
-			background-image: url("imgs/bg.jpg");
-			background-size: cover;
-			background-position: center;
-			background-repeat: no-repeat;
-			z-index: 10;
-			-webkit-mask-image: url(imgs/newmask_v2.svg);
-			-webkit-mask-size: 4000px 2250px;
-			-webkit-mask-repeat: no-repeat;
-
-			/*-webkit-mask-position: calc(50.3%) 63%;*/
-		}
-
-		#eyeposescontainer {
-			position: fixed;
-			display: none;
-			z-index: 1000;
-			color: white;
-		}
-
-		#overlaycanvas {
-			margin: 0;
-			position: absolute;
-			z-index: 1000;
-			width: 100%;
-			height: 100%;
-			pointer-events: none;
-		}
-			.divider{
-				height:50px;
-			}
-		@media only screen and (min-width: 900px) {
-		#resumeContainer{
-			width: calc(800px);
-			display:inline-block;
-
-
-		}
-			.flex-container2 {
-				left: -300px;
-				padding-left: 600px;
-				top: 0px;
-			}
-			#newmask {
-				/*-webkit-mask-position: calc(50.3% + 200px) 65%;*/
-				height: 750px;
-				-webkit-mask-position-y: calc(-970px);
-				-webkit-mask-position-x: calc(50.3% + 290px);
-			}
-			#canvascontainer {
-				left: 290px;
-				top: calc(0px);
-			}
-			#chunk0 {
-				top: 750px;
-			}
-			.subtitlediv {
-				margin-top: 7px;
-			}
-			.flex-container{
-				top:275px;
-			}
-			@media only screen and (max-height: 750px) {
-				.flex-container{
-					align-items: center;
-			  		height: 100%;
-			  		top:0px;
-				}
-				#newmask {
-					height: 100%;
-					/*-webkit-mask-position: calc(50.3% + 200px) 65%;*/
-					-webkit-mask-position-y: calc(54% - 150px) !important;
-				}
-					#chunk0 {
-						top: 100%;
-					}
-					#canvascontainer {
-						top: calc(54% - 388px);
-					}
-			}
-		}
-
-		@media only screen and (max-width: 899px) {
-			.subtitlediv {
-				margin-top: -1px;
-			}
-			#titleText {
-				position:absolute !important;
-				left: 0px !important;
-				top: 100px !important;
-				text-align: center;
-							z-index: 195 !important;
-
-			}
-			.frontText {
-				visibility: hidden;
-			}
-			#chunk0 {
-				top: 100%;
-			}
-			#newmask {
-				height: 100%;
-				/*-webkit-mask-position: calc(50.3% + 200px) 65%;*/
-				-webkit-mask-position-y: calc(54% - 100px);
-				-webkit-mask-position-x: calc(50.2%);
-			}
-			#canvascontainer {
-				top: calc(54% - 338px);
-			}
-			.titlediv {
-				width: 350px;
-				font-size: 0.9em;
-				padding-top: 25px;
-			}
-			.subtitlediv {}
-						#mobileLinkContainer{
-							bottom:30px;
-							width:100%;
-							text-align:center;
-							position:absolute;
-							z-index: 195;
-						}
-						#mobileLink{
-							padding:2px 10px;
-							font-size:0.95em;
-							  text-decoration: none;
-							  color: #c9d7ff;
-						}
-								@media only screen and (min-height: 900px) {
-									.flex-container2 {
-										top: 0px;
-									}
-									.flex-container{
-										top:275px ;
-									}
-									#newmask {
-										/*-webkit-mask-position: calc(50.3% + 200px) 65%;*/
-										height: 750px;
-										-webkit-mask-position-y: calc(-930px);
-									}
-									#canvascontainer {
-										top: calc(40px);
-									}
-									#chunk0 {
-										top: 750px;
-									}
-									#mobileLinkContainer{
-										top:670px;
-										width:100%;
-										text-align:center;
-										position:absolute;
-										z-index: 195;
-									}
-									#mobileLink{
-										background-color: rgba(0, 0, 0, 0.0);
-										border: 2px solid #fff;
-										display: inline-block;
-										cursor: pointer;
-										color: #ffffff;
-										font-size: 17px;
-										padding: 12px 24px;
-										text-decoration: none;
-										text-shadow: 0px 1px 0px #2f6627;
-										transition: background-color 0.5s ease;
-									}
-								}
-
-
-		}
-
-		#titleText {
-			position: fixed;
-			display: flex;
-			justify-content: center;
-			width: calc(100%);
-			top: 0px;
-			font-size: 2em;
-			z-index: 300;
-			padding-top: 20px;
-			padding-bottom: 20px;
-			left: -245px;
-			color: white;
-			pointer-events: none;
-			font-family: 'Prompt', sans-serif !important;
-		}
-
-		.titlediv {
-			width: 350px;
-		}
-
-		.subtitlediv {
-			font-size: 0.5em;
-		}
-
-		.hideboy {
-			display: none;
-		}
-
-		.newbg {
-			background-color: rgba(0, 0, 0, 0.7);
-			height: 58px;
-		}
-		.project{
-			position:relative;
-			/*top: 100px;*/
-			width:800px;
-			height: 450px;
- 			 border-top: 1px solid rgba(31, 46, 110);
-
-		}
-			img{
-				height:calc(100% - 10px);
-				width:auto;
-				padding: 10px;
-
-			}
-			.prjimg{
-				top:20px;
-				position:absolute;
-				width:100%;
-				height:100%;	
-				text-align: right;
-			}
-			.overlayimg{
-				opacity:0;
-
-				transition: opacity 0.5s ease;
-			}
-			.opacityclass{
-				opacity:1 !important;
-			}
-			.projectText{
-				position:absolute;
-				color:white;
-				background-color: rgba(10, 19, 54, 0.82);
-				z-index:10;
-				top:55px;
-				padding:20px;
-				left:10px;
-				width:550px;
-			}
-				@media only screen and (min-width: 900px) {
-						.project{
-										left:calc(50% - 400px);
-
-						}
-						#mobileLinkContainer{
-							display:none;
-						}
-					}
-					@media only screen and (max-width: 899px) and (min-width: 656px) {
-						.project{
-							position:relative;
-							/*top: 100px;*/
-							width:100%;
-							height: auto;
-							padding-bottom:60px;
-						}
-						.projectText{
-							left:35px;
-						}
-						img{
-							padding:25px;
-						}
-					}
-
-					@media only screen and (max-width: 655px) {
-
-						.project{
-							position:relative;
-							/*top: 100px;*/
-							width:100%;
-							
-							height: auto;
-
-
-						}
-						img{
-							/*max-height:calc(100% - 20px);*/
-							max-width: calc(100% - 20px);
-							width:auto;
-							height:auto;
-							padding: 10px;
-						}
-						.projectText{
-							position:absolute;
-							color:white;
-							background-color: rgba(10, 19, 54, 0.82);
-							z-index:10;
-							top:25px;
-							padding:20px;
-							left:10px;
-							width:calc(100% - 60px);
-							font-size:0.85em;
-							
-						}
-						.projectText a{
-							font-size:1.1em !important;
-							padding: 6px 12px;
-						}
-						.prjimg{
-							text-align: left;
-							overflow:hidden;
-						}
-
-					}
-
-
-      </style>
+      <link rel="stylesheet" href="css/css.css">
    </head>
    <body ontouchstart="">
-   	<div id="mobileLinkContainer"><a class="emailbut" id="mobileLink" href="javascript:void(0)">jack.lambermont@gmail.com</a></div>
+      <div id="mobileLinkContainer"><a class="emailbut" id="mobileLink" href="javascript:void(0)">jack.lambermont@gmail.com</a></div>
       <div id="overlaycanvas">
          <canvas id="myCanvas"></canvas>
       </div>
@@ -528,35 +62,86 @@
          </div>
       </div>
       <div id="chunk0">
-      	<div class="project">
-      		<div class="projectText"><h1>Fusion Flasks engraving tool</h1>This Squarespace integrated web application allows customers to create a customized engraving for their flask. Users create the design with my custom UI, and the tool generates a .svg file that is emailed to the company when the purchase is finalized. Check out the demo to see how it works. While the mobile version is fully functional, the desktop version provides a better experience.<br><br><a href="flask/" class="myButton">Demo</a> <a href="https://fusionflasks.com/" target="_blank" class="myButton" style="margin-left:20px !important">fusionflasks.com</a></div>
-      		<div class="prjimg"><img src="imgs/pj1_inv.png"></div><div class="prjimg overlayimg"><img src="imgs/pj1.png"></div>
-      	</div><div class="divider"></div>
-      	      	<div class="project">
-      		<div class="projectText"><h1>Innerlinks Wordpress Site</h1>Wordpress website for professional psychologist in Mississauga, Ontario<br><br><a href="https://innerlinks.ca/" target="_blank" class="myButton">innerlinks.ca</a></div>
-      		<div class="prjimg"><img src="imgs/pj2_inv.jpg"></div><div class="prjimg overlayimg"><img src="imgs/pj2.jpg"></div>
-      	</div>
-      	<div id="chunk1">
-      		<div id="resumeContainer">
-			<div style="border-bottom: 1px solid #fff; font-size:1.4em; font-weight: 400;"><p><h1>Résumé </h1></p></div>
-<br><br>
-			<p><h1>Office Administrator</h1></p>
-			<p>Jans Awning Products - Burlington, ON</p>
-			<p>September 2019–October 2020</p>
-			<br>
-			<p><h1>Game Programming Instructor</h1></p>
-			<p>Real Programming for Kids - Oakville, ON</p>
-			<p>November 2017 – August 2018</p>
-			<br>
-			<p><h1>Bachelor of Fine Arts in Integrated Media</h1></p>
-			<p>OCAD University</p>
-			<p>September 2013 - June 2017</p>
-			<br>
-			<p><h1>Project 31 Integrated Media Award -$1000</h1></p>
-			<p>May 2017</p>
-			<p>Thesis project Tweet Localities - a procedurally generated web program analyzing privacy and surveillance in online social media posts</p>
-      		</div>
-      	</div>
+         <div class="project">
+            <div class="projectText">
+               <h1>Fusion Flasks engraving tool</h1>
+               This Squarespace integrated web application allows customers to create a customized engraving for their flask. Users create the design with my custom UI, and the tool generates a .svg file that is emailed to the company when the purchase is finalized. Check out the demo to see how it works. While the mobile version is fully functional, the desktop version provides a better experience.<br><br><a href="flask/" class="myButton">Demo</a> <a href="https://fusionflasks.com/" target="_blank" class="myButton" style="margin-left:20px !important">fusionflasks.com</a>
+            </div>
+            <div class="prjimg"><img src="imgs/pj1_inv.png"></div>
+            <div class="prjimg overlayimg"><img src="imgs/pj1.png"></div>
+         </div>
+         <div class="divider"></div>
+         <div class="project">
+            <div class="projectText">
+               <h1>Innerlinks Wordpress Site</h1>
+               Wordpress website for professional psychologist in Mississauga, Ontario<br><br><a href="https://innerlinks.ca/" target="_blank" class="myButton">innerlinks.ca</a>
+            </div>
+            <div class="prjimg"><img src="imgs/pj2_inv.jpg"></div>
+            <div class="prjimg overlayimg"><img src="imgs/pj2.jpg"></div>
+         </div>
+		<div class="divider"></div>
+         <div class="project">
+            <div class="projectText">
+               <h1>RPM Alliances Site</h1>
+               Website for RPM Alliances: a globally engaged, custom fixture, furniture and millwork provider, servicing retail, hospitality and financial customers.<br><br><a href="http://www.rpmalliances.com/" target="_blank" class="myButton">rpmalliances.com</a>
+            </div>
+            <div class="prjimg"><img src="imgs/pj3_inv.jpg"></div>
+            <div class="prjimg overlayimg"><img src="imgs/pj3.jpg"></div>
+         </div>
+         <div id="chunk1">
+            <div id="resumeContainer">
+               
+               <p>
+               <div style="font-size:1.4em; font-weight: 400;">
+
+               	<h1>Skills</h1>
+               </div>
+               	<hr style="width:50%; border-width: 1px;">
+
+               	<p>
+               		<p>Languages: C#, JavaScript, Visual Basic, PHP, Google Apps Script (for spreadsheet automation tasks)</p>
+               		<p>Applications: Adobe Photoshop, Unity 3D, Visual Studio, Final Cut Pro, Excel, Blender</p>
+               		<p>Dev Tools: Atom, nw.js, Github</p>
+               		<p>Squarespace and Wordpress experience including custom JavaScript integration</p>
+               		<p>Experience with API integration including Google Maps, StreetView and Twitter</p>
+               	</p>
+               </p>
+               <br><br>
+               <div style="font-size:1.4em; font-weight: 400;">
+               <h1>Experience</h1>
+               </div>
+               	<hr style="width:50%; border-width: 1px;">
+               	<p>
+               <h1>Production Assistant</h1>
+               </p>
+               <p>The Umbrella Academy Season 3 - Toronto, ON</p>
+               <p>October 2020–October 2021</p>
+               <br>
+               <p>
+               <h1>Office Administrator</h1>
+               </p>
+               <p>Jans Awning Products - Burlington, ON</p>
+               <p>September 2019–October 2020</p>
+               <br>
+               <p>
+               <h1>Game Programming Instructor</h1>
+               </p>
+               <p>Real Programming for Kids - Oakville, ON</p>
+               <p>November 2017 – August 2018</p>
+               <br>
+               <p>
+               <h1>Bachelor of Fine Arts in Integrated Media</h1>
+               </p>
+               <p>OCAD University - Toronto, ON</p>
+               <p>September 2013 - June 2017</p>
+               <br>
+               <p>
+               <h1>Project 31 Integrated Media Award -$1000</h1>
+               </p>
+               <p>May 2017</p>
+               <p>Thesis project Tweet Localities - a procedurally generated web program analyzing privacy and surveillance in online social media posts</p>
+            </div>
+         </div>
       </div>
       <script type="module">
          var c;
@@ -568,7 +153,7 @@
          import {
              VRButton
          } from './js/VRButton.js';
-
+         
          window.THREE = THREE; // Used by APP Scripts.
          window.VRButton = VRButton; // Used by APP Scripts.
          var loader = new THREE.FileLoader();
@@ -588,304 +173,10 @@
              // optional: remove loader from DOM via event listener
              loadingScreen.addEventListener('transitionend', onTransitionEnd);
          };
-         /*
-         $( document ).ready(function() {
-         			const loadingScreen = document.getElementById( 'loading-screen' );
-         		loadingScreen.classList.add( 'fade-out' );
-         		// optional: remove loader from DOM via event listener
-         		loadingScreen.addEventListener( 'transitionend', onTransitionEnd );
-         });
-         */
-         var currentMousePos = {
-             x: -1,
-             y: -1
-         };
-         $(document).mousemove(function(event) {
-             currentMousePos.x = event.pageX;
-             currentMousePos.y = event.pageY;
-         });
-         var imageArray = new Array();
-         imageArray[0] = "imgs/exp/1.png";
-         imageArray[1] = "imgs/exp/2.png";
-         imageArray[2] = "imgs/exp/3.png";
-         imageArray[3] = "imgs/exp/4.png";
-         imageArray[4] = "imgs/exp/5.png";
-         imageArray[5] = "imgs/exp/6.png";
-         imageArray[6] = "imgs/exp/7.png";
-         imageArray[7] = "imgs/exp/8.png";
-         imageArray[8] = "imgs/exp/9.png";
-         imageArray[9] = "imgs/exp/10.png";
-         imageArray[10] = "imgs/exp/11.png";
-         imageArray[11] = "imgs/exp/12.png";
-         imageArray[12] = "imgs/exp/13.png";
-         imageArray[13] = "imgs/exp/14.png";
-         imageArray[14] = "imgs/exp/15.png";
-         imageArray[15] = "imgs/exp/16.png";
-         imageArray[16] = "imgs/exp/17.png";
-         var imges = new Array();
-         for (var i = 0; i < imageArray.length; i++) {
-             imges[i] = new Image();
-             imges[i].src = imageArray[i]
-         }
-         function onTransitionEnd(event) {
-             event.target.remove();
-         }
-         $( ".project" ).mouseover(function() {
-         	$( this ).find( ".overlayimg" ).addClass("opacityclass");
-		});
-        $( ".project" ).mouseleave(function() {
-         	$( this ).find( ".overlayimg" ).removeClass("opacityclass");
-		});
-         $("#artbut").click(function() {
-         	 if (currentMousePos.y < ($("#newmask").position().top + $("#newmask").outerHeight(true))){
-	             setTimeout(function() {
-	                 $('html, body').animate({
-	                     scrollTop: $("#chunk0").offset().top-20
-	                 }, 500);
-	             }, 500);
-         	} else {
-         			 $('html, body').animate({
-	                     scrollTop: $("#chunk0").offset().top-20
-	                 }, 500);
-         	}
-         });
-         $("#resbut").click(function() {
-         	 if (currentMousePos.y < ($("#newmask").position().top + $("#newmask").outerHeight(true))){
-	             setTimeout(function() {
-	                 $('html, body').animate({
-	                     scrollTop: $("#chunk1").offset().top-20
-	                 }, 500);
-	             }, 500);
-	         } else {
-	            $('html, body').animate({
-	                 scrollTop: $("#chunk1").offset().top-20
-	            }, 500);
-	         }
-         });
-         $("#gamesbut").click(function() {
-         	 if (currentMousePos.y < ($("#newmask").position().top + $("#newmask").outerHeight(true))){
-	             setTimeout(function() {
-	                 window.open(
-	                     'https://landermint.itch.io/',
-	                     '_blank' // <- This is what makes it open in a new window.
-	                 );
-	             }, 500);
-	         } else {
-	             window.open(
-	                'https://landermint.itch.io/',
-	             	'_blank' // <- This is what makes it open in a new window.
-	             );
-	         }
-         });
-         $(".emailbut, #emailbuttondesktop").click(function() {
-         	 if (currentMousePos.y < ($("#newmask").position().top + $("#newmask").outerHeight(true))){
-	             setTimeout(function() {
-					window.open('mailto:jack.lambermont@gmail.com');
-	             }, 500);
-	         } else {
-					window.open('mailto:jack.lambermont@gmail.com');
-
-	         }
-         })
-         $(window).scroll(function() {
-			hideDivs();
-         });
-
-         $(document).ready(function() {
-
-         		hideDivs();
-             c = document.getElementById("myCanvas");
-             ctx = c.getContext("2d");
-             ctx.canvas.width = window.innerWidth;
-             if (window.innerWidth >= 900) {
-                 ctx.canvas.height = 750;
-                 $( ".project" ).each(function( i ) {
-                	 $(this).css("height","");
- 				 });
-             } else {
-                 ctx.canvas.height = window.innerHeight;
-
-                 $( ".project" ).each(function( i ) {
-                	 $(this).css("height",""+($(this).find(".projectText").outerHeight())+"px");
- 				 });
-             }
-
-             adjustforscroll();
-                      	requestAnimationFrame(drawBeams);
-
-         });
-         function hideDivs(){
-         	             if ($(window).scrollTop() > 0) {
-                 $(".hideonscroll").addClass("hideboy");
-                 $(".flex-container2").addClass("newbg");
-                 if (window.innerWidth >= 900) {
-                     //$(".titlediv").addClass("hideboy");
-                     $(".subtitlediv").addClass("hideboy");
-                 }
-             } else {
-                 $(".hideonscroll").removeClass("hideboy");
-                 $(".flex-container2").removeClass("newbg");
-                  $(".subtitlediv").removeClass("hideboy");
-             }
-         }
-         $(window).bind("resize", function() {
-             ctx.canvas.width = window.innerWidth;
-             if (window.innerWidth >= 900) {
-                 ctx.canvas.height = 750;
-                 $( ".project" ).each(function( i ) {
-                	 $(this).css("height","");
- 				 });
-             } else {
-                 $( ".project" ).each(function( i ) {
-                	 $(this).css("height",""+($(this).find(".projectText").outerHeight())+"px");
- 				 });
-                 ctx.canvas.height = window.innerHeight;
-             }
-             adjustforscroll();
-             hideDivs();
-         });
-         function adjustforscroll() {
-             if (/Mobi|Android/i.test(navigator.userAgent) && window.innerWidth < 900) {
-                 $("#canvascontainer").css("left", "10px");
-                 // $("#overlaycanvas").css("left","10px");
-             }
-         }
-         var linearr = [];
-
-         $("body").click(function(e) {
-             //alert( ""+leftEyex+" "+leftEyey+"" );
-             /*
-         		       					ctx.clearRect(0, 0, c.width, c.height);
-         				ctx.beginPath();
-         				ctx.moveTo(leftEyex, leftEyey);
-         				ctx.lineTo(e.pageX, e.pageY);
-         				ctx.stroke();
-         */
-         if (currentMousePos.y < ($("#newmask").position().top + $("#newmask").outerHeight(true))){
-	             $("#canvascontainer").effect("shake", {
-	                 direction: "left",
-	                 times: 2,
-	                 distance: 5
-	             }, 200);
-	             setTimeout(function() {
-	                 var offset = parseInt($('#canvascontainer').css('top'));
-	                 var leftEyePos = $("#eyeposes").html().split(",");
-	                 var rightEyePos = $("#eyeposes2").html().split(",");
-	                 var leftEyex = Math.round(leftEyePos[0]);
-	                 var leftEyey = Math.round(leftEyePos[1]) + offset;
-	                 var rightEyex = Math.round(rightEyePos[0]);
-	                 var rightEyey = Math.round(rightEyePos[1]) + offset;
-	                 if (window.innerWidth >= 900) {
-	                     //makeLine(50, leftEyex + 290, leftEyey, rightEyex + 290, rightEyey, currentMousePos.x, currentMousePos.y, 0);
-	                     var newLine = {
-	                     	timer: 50,
-	                     	eyeposx: leftEyex + 290,
-	                     	eyeposy: leftEyey,
-	                     	eyeposx2: rightEyex + 290,
-	                     	eyeposy2: rightEyey,
-	                     	mousex: currentMousePos.x,
-	                     	mousey: currentMousePos.y
-						}
-						linearr.push(newLine);
-	                 } else {
-	                     //makeLine(50, leftEyex + 10, leftEyey, rightEyex + 10, rightEyey, currentMousePos.x, currentMousePos.y, 0);
-	                     var newLine = {
-	                     	timer: 50,
-	                     	eyeposx: leftEyex + 10,
-	                     	eyeposy: leftEyey,
-	                     	eyeposx2: rightEyex + 10,
-	                     	eyeposy2: rightEyey,
-	                     	mousex: currentMousePos.x,
-	                     	mousey: currentMousePos.y
-						}
-						linearr.push(newLine);
-	                 }
-	             }, 100);
-             }
-         });
-         var previousTimestamp;
-         function drawBeams(timestamp){
-         	if (previousTimestamp !== timestamp){
-         		ctx.clearRect(0, 0, c.width, c.height);
-         		if (linearr.length > 0){
-					for (let i = 0; i < linearr.length; i++) {
-						console.log(linearr[i]);
-						
-					 	 if (linearr[i].timer > 0) {
-			                 ctx.shadowBlur = 10;
-			                 ctx.shadowColor = '#FD  0100';
-			                 ctx.strokeStyle = 'rgba(255, 0, 0, ' + scale(linearr[i].timer, 0, 29, 0, 1) + ')';
-			                 ctx.lineWidth = 3.5;
-			                 ctx.lineCap = "round";
-			                 ctx.beginPath();
-			                 ctx.moveTo(linearr[i].eyeposx, linearr[i].eyeposy);
-			                 ctx.lineTo(linearr[i].mousex, linearr[i].mousey);
-			                 ctx.stroke();
-			                 ctx.beginPath();
-			                 ctx.moveTo(linearr[i].eyeposx2, linearr[i].eyeposy2);
-			                 ctx.lineTo(linearr[i].mousex, linearr[i].mousey);
-			                 ctx.stroke();
-			                 linearr[i].timer -= 1;
-			                 ctx.shadowBlur = 0;
-			                 var mappednum = Math.floor(scale(linearr[i].timer, 49, 1, 0, 16));
-			                 ctx.drawImage(imges[mappednum], linearr[i].mousex - 60, linearr[i].mousey - 84, 120, 168);
-		                 }
-		                 if (linearr[i].timer == 0){
-		                 	linearr[i].timer = -1;
-		                 	setTimeout(function() {
-				                 linearr.shift();
-				             }, 500);
-		                 }
-		                 
-		             }
-				}
-
-         	}
-			
-         	previousTimestamp = timestamp;
-         	requestAnimationFrame(drawBeams);
-         }
-         /*
-         function makeLine(timer, eyeposx, eyeposy, eyeposx2, eyeposy2, mousex, mousey, timestamp, previousTimestamp) {
-             // ctx.clearRect(0, 0, c.width, c.height);
-
-             if (timer > 0) {
-             	if (previousTimestamp !== timestamp){
-	                 ctx.shadowBlur = 10;
-	                 ctx.shadowColor = '#FD  0100';
-	                 ctx.strokeStyle = 'rgba(255, 0, 0, ' + scale(timer, 0, 29, 0, 1) + ')';
-	                 ctx.lineWidth = 3.5;
-	                 ctx.lineCap = "round";
-	                 ctx.beginPath();
-	                 ctx.moveTo(eyeposx, eyeposy);
-	                 ctx.lineTo(mousex, mousey);
-	                 ctx.stroke();
-	                 ctx.beginPath();
-	                 ctx.moveTo(eyeposx2, eyeposy2);
-	                 ctx.lineTo(mousex, mousey);
-	                 ctx.stroke();
-	                 timer -= 1;
-	                 ctx.shadowBlur = 0;
-	                 var mappednum = Math.floor(scale(timer, 49, 1, 0, 16));
-	                 ctx.drawImage(imges[mappednum], mousex - 60, mousey - 84, 120, 168);
-                 }
-
-				previousTimestamp = timestamp;
-             	requestAnimationFrame(function(timestamp) {
-					ctx.clearRect(0, 0, c.width, c.height);
-				    makeLine(timer, eyeposx, eyeposy, eyeposx2, eyeposy2, mousex, mousey, timestamp, previousTimestamp);
-
-				});
-             }
-
-         }
-*/
-         function scale(number, inMin, inMax, outMin, outMax) {
-             return (number - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
-         }
-         		
+         
       </script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+      <script src="js/js.js"></script>
    </body>
 </html>
