@@ -286,6 +286,59 @@
 				padding-top: 25px;
 			}
 			.subtitlediv {}
+						#mobileLinkContainer{
+							bottom:30px;
+							width:100%;
+							text-align:center;
+							position:absolute;
+							z-index: 195;
+						}
+						#mobileLink{
+							padding:2px 10px;
+							font-size:0.95em;
+							  text-decoration: none;
+							  color: #c9d7ff;
+						}
+								@media only screen and (min-height: 900px) {
+									.flex-container2 {
+										top: 0px;
+									}
+									.flex-container{
+										top:275px ;
+									}
+									#newmask {
+										/*-webkit-mask-position: calc(50.3% + 200px) 65%;*/
+										height: 750px;
+										-webkit-mask-position-y: calc(-930px);
+									}
+									#canvascontainer {
+										top: calc(40px);
+									}
+									#chunk0 {
+										top: 750px;
+									}
+									#mobileLinkContainer{
+										top:670px;
+										width:100%;
+										text-align:center;
+										position:absolute;
+										z-index: 195;
+									}
+									#mobileLink{
+										background-color: rgba(0, 0, 0, 0.0);
+										border: 2px solid #fff;
+										display: inline-block;
+										cursor: pointer;
+										color: #ffffff;
+										font-size: 17px;
+										padding: 12px 24px;
+										text-decoration: none;
+										text-shadow: 0px 1px 0px #2f6627;
+										transition: background-color 0.5s ease;
+									}
+								}
+
+
 		}
 
 		#titleText {
@@ -368,7 +421,23 @@
 							display:none;
 						}
 					}
-					@media only screen and (max-width: 899px) {
+					@media only screen and (max-width: 899px) and (min-width: 656px) {
+						.project{
+							position:relative;
+							/*top: 100px;*/
+							width:100%;
+							height: auto;
+							padding-bottom:60px;
+						}
+						.projectText{
+							left:35px;
+						}
+						img{
+							padding:25px;
+						}
+					}
+
+					@media only screen and (max-width: 655px) {
 
 						.project{
 							position:relative;
@@ -407,21 +476,9 @@
 							overflow:hidden;
 						}
 
-						#mobileLinkContainer{
-							bottom:30px;
-							width:100%;
-							text-align:center;
-							position:absolute;
-							z-index: 195;
-						}
-						#mobileLink{
-							padding:2px 10px !important;
-							font-size:0.95em;
-							  text-decoration: none;
-							  color: #c9d7ff;
-						}
-
 					}
+
+
       </style>
    </head>
    <body ontouchstart="">
@@ -481,7 +538,7 @@
       	</div>
       	<div id="chunk1">
       		<div id="resumeContainer">
-			<div style="border-bottom: 1px solid #fff; font-size:1.4em; font-weight: 400;"><p><h1>Résumé</h1></p></div>
+			<div style="border-bottom: 1px solid #fff; font-size:1.4em; font-weight: 400;"><p><h1>Résumé </h1></p></div>
 <br><br>
 			<p><h1>Office Administrator</h1></p>
 			<p>Jans Awning Products - Burlington, ON</p>
@@ -633,7 +690,9 @@
          $(window).scroll(function() {
 			hideDivs();
          });
+
          $(document).ready(function() {
+
          		hideDivs();
              c = document.getElementById("myCanvas");
              ctx = c.getContext("2d");
@@ -652,6 +711,8 @@
              }
 
              adjustforscroll();
+                      	requestAnimationFrame(drawBeams);
+
          });
          function hideDivs(){
          	             if ($(window).scrollTop() > 0) {
@@ -689,6 +750,8 @@
                  // $("#overlaycanvas").css("left","10px");
              }
          }
+         var linearr = [];
+
          $("body").click(function(e) {
              //alert( ""+leftEyex+" "+leftEyey+"" );
              /*
@@ -713,40 +776,110 @@
 	                 var rightEyex = Math.round(rightEyePos[0]);
 	                 var rightEyey = Math.round(rightEyePos[1]) + offset;
 	                 if (window.innerWidth >= 900) {
-	                     makeLine(50, leftEyex + 290, leftEyey, rightEyex + 290, rightEyey, currentMousePos.x, currentMousePos.y);
+	                     //makeLine(50, leftEyex + 290, leftEyey, rightEyex + 290, rightEyey, currentMousePos.x, currentMousePos.y, 0);
+	                     var newLine = {
+	                     	timer: 50,
+	                     	eyeposx: leftEyex + 290,
+	                     	eyeposy: leftEyey,
+	                     	eyeposx2: rightEyex + 290,
+	                     	eyeposy2: rightEyey,
+	                     	mousex: currentMousePos.x,
+	                     	mousey: currentMousePos.y
+						}
+						linearr.push(newLine);
 	                 } else {
-	                     makeLine(50, leftEyex + 10, leftEyey, rightEyex + 10, rightEyey, currentMousePos.x, currentMousePos.y);
+	                     //makeLine(50, leftEyex + 10, leftEyey, rightEyex + 10, rightEyey, currentMousePos.x, currentMousePos.y, 0);
+	                     var newLine = {
+	                     	timer: 50,
+	                     	eyeposx: leftEyex + 10,
+	                     	eyeposy: leftEyey,
+	                     	eyeposx2: rightEyex + 10,
+	                     	eyeposy2: rightEyey,
+	                     	mousex: currentMousePos.x,
+	                     	mousey: currentMousePos.y
+						}
+						linearr.push(newLine);
 	                 }
 	             }, 100);
              }
          });
-         function makeLine(timer, eyeposx, eyeposy, eyeposx2, eyeposy2, mousex, mousey) {
-             // ctx.clearRect(0, 0, c.width, c.height);
-             if (timer > 0) {
-                 ctx.shadowBlur = 10;
-                 ctx.shadowColor = '#FD  0100';
-                 ctx.strokeStyle = 'rgba(255, 0, 0, ' + scale(timer, 0, 29, 0, 1) + ')';
-                 ctx.lineWidth = 3.5;
-                 ctx.lineCap = "round";
-                 ctx.beginPath();
-                 ctx.moveTo(eyeposx, eyeposy);
-                 ctx.lineTo(mousex, mousey);
-                 ctx.stroke();
-                 ctx.beginPath();
-                 ctx.moveTo(eyeposx2, eyeposy2);
-                 ctx.lineTo(mousex, mousey);
-                 ctx.stroke();
-                 timer -= 1;
-                 ctx.shadowBlur = 0;
-                 var mappednum = Math.floor(scale(timer, 49, 1, 0, 16));
-                 ctx.drawImage(imges[mappednum], mousex - 60, mousey - 84, 120, 168);
-                 setTimeout(function() {
-                     ctx.clearRect(0, 0, c.width, c.height);
-                     makeLine(timer, eyeposx, eyeposy, eyeposx2, eyeposy2, mousex, mousey);
-                 }, 10);
-             }
-             //setTimeout(makeLine(timer,eyeposx,eyeposy,mousex,mousey),1000);
+         var previousTimestamp;
+         function drawBeams(timestamp){
+         	if (previousTimestamp !== timestamp){
+         		ctx.clearRect(0, 0, c.width, c.height);
+         		if (linearr.length > 0){
+					for (let i = 0; i < linearr.length; i++) {
+						console.log(linearr[i]);
+						
+					 	 if (linearr[i].timer > 0) {
+			                 ctx.shadowBlur = 10;
+			                 ctx.shadowColor = '#FD  0100';
+			                 ctx.strokeStyle = 'rgba(255, 0, 0, ' + scale(linearr[i].timer, 0, 29, 0, 1) + ')';
+			                 ctx.lineWidth = 3.5;
+			                 ctx.lineCap = "round";
+			                 ctx.beginPath();
+			                 ctx.moveTo(linearr[i].eyeposx, linearr[i].eyeposy);
+			                 ctx.lineTo(linearr[i].mousex, linearr[i].mousey);
+			                 ctx.stroke();
+			                 ctx.beginPath();
+			                 ctx.moveTo(linearr[i].eyeposx2, linearr[i].eyeposy2);
+			                 ctx.lineTo(linearr[i].mousex, linearr[i].mousey);
+			                 ctx.stroke();
+			                 linearr[i].timer -= 1;
+			                 ctx.shadowBlur = 0;
+			                 var mappednum = Math.floor(scale(linearr[i].timer, 49, 1, 0, 16));
+			                 ctx.drawImage(imges[mappednum], linearr[i].mousex - 60, linearr[i].mousey - 84, 120, 168);
+		                 }
+		                 if (linearr[i].timer == 0){
+		                 	linearr[i].timer = -1;
+		                 	setTimeout(function() {
+				                 linearr.shift();
+				             }, 500);
+		                 }
+		                 
+		             }
+				}
+
+         	}
+			
+         	previousTimestamp = timestamp;
+         	requestAnimationFrame(drawBeams);
          }
+         /*
+         function makeLine(timer, eyeposx, eyeposy, eyeposx2, eyeposy2, mousex, mousey, timestamp, previousTimestamp) {
+             // ctx.clearRect(0, 0, c.width, c.height);
+
+             if (timer > 0) {
+             	if (previousTimestamp !== timestamp){
+	                 ctx.shadowBlur = 10;
+	                 ctx.shadowColor = '#FD  0100';
+	                 ctx.strokeStyle = 'rgba(255, 0, 0, ' + scale(timer, 0, 29, 0, 1) + ')';
+	                 ctx.lineWidth = 3.5;
+	                 ctx.lineCap = "round";
+	                 ctx.beginPath();
+	                 ctx.moveTo(eyeposx, eyeposy);
+	                 ctx.lineTo(mousex, mousey);
+	                 ctx.stroke();
+	                 ctx.beginPath();
+	                 ctx.moveTo(eyeposx2, eyeposy2);
+	                 ctx.lineTo(mousex, mousey);
+	                 ctx.stroke();
+	                 timer -= 1;
+	                 ctx.shadowBlur = 0;
+	                 var mappednum = Math.floor(scale(timer, 49, 1, 0, 16));
+	                 ctx.drawImage(imges[mappednum], mousex - 60, mousey - 84, 120, 168);
+                 }
+
+				previousTimestamp = timestamp;
+             	requestAnimationFrame(function(timestamp) {
+					ctx.clearRect(0, 0, c.width, c.height);
+				    makeLine(timer, eyeposx, eyeposy, eyeposx2, eyeposy2, mousex, mousey, timestamp, previousTimestamp);
+
+				});
+             }
+
+         }
+*/
          function scale(number, inMin, inMax, outMin, outMax) {
              return (number - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
          }
