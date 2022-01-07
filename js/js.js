@@ -33,12 +33,37 @@ for (var i = 0; i < imageArray.length; i++) {
 function onTransitionEnd(event) {
     event.target.remove();
 }
-$(".project").mouseover(function() {
+/*
+$(".project").on('mouseenter touchstart', function(e){ 
+
     $(this).find(".overlayimg").addClass("opacityclass");
 });
-$(".project").mouseleave(function() {
+$(".project").on('mouseleave', function(){
     $(this).find(".overlayimg").removeClass("opacityclass");
 });
+$('body').on('touchstart', function(e){ 
+    $( ".project" ).each(function( index ) {
+         if($(e.target).closest(this).length === 0) {
+            $(this).find(".overlayimg").removeClass("opacityclass");
+        }
+    });
+});
+*/
+$('body').on('mousemove', function(e){ 
+        $(".project").each(function(index, target) {
+            $(".project").each(function(index2, target2) {
+                    if($(e.target).closest(target).length === 0 && $(e.target).closest(target2).length != 0) {
+                            if ($(target).find(".overlayimg").hasClass("opacityclass")){
+                                $(target).find(".overlayimg").removeClass("opacityclass");
+                            }
+                            if (!$(target2).find(".overlayimg").hasClass("opacityclass")){
+                                $(target2).find(".overlayimg").addClass("opacityclass");
+                            }
+                    }
+            });
+        });
+});
+
 $("#artbut").click(function() {
     if (currentMousePos.y < ($("#newmask").position().top + $("#newmask").outerHeight(true))) {
         setTimeout(function() {
@@ -92,6 +117,32 @@ $(".emailbut, #emailbuttondesktop").click(function() {
 })
 $(window).scroll(function() {
     hideDivs();
+        $(".project").each(function(index, target) {
+
+            $(".project").each(function(index2, target2) {
+                if (index != index2) {
+                    //if (($(window).scrollTop() >= $(target).offset().top + $(target).outerHeight() - window.innerHeight - 40)) {
+                     if ($(window).scrollTop() + (window.innerHeight/2)+100 >= $(target).offset().top + ($(target).outerHeight()/2)) {
+
+                        if ($(".project:eq(" + (index + 1) + ")").find(".overlayimg").hasClass("opacityclass") == false) {
+                            $(target).find(".overlayimg").addClass("opacityclass");
+
+                        }
+                        if ($(target2).find(".overlayimg").hasClass("opacityclass") && index2 < index) {
+                            $(target2).find(".overlayimg").removeClass("opacityclass");
+                        }
+                    }
+
+                }
+
+            });
+
+
+                     if ($(window).scrollTop() + (window.innerHeight)-100 < $(target).offset().top + ($(target).outerHeight()/2)) {
+                $(this).find(".overlayimg").removeClass("opacityclass");
+            }
+        });
+    
 });
 
 $(document).ready(function() {
