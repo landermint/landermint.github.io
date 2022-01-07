@@ -447,11 +447,11 @@ function makeVariable() {
  <button id="accbut1" class="engravingaccordion">Add Divider</button>
 <div class="panel" id="panel0" style="text-align:center;">
  
- <div id="divider0" class="insgfxbut" style="margin-top:10px"><img src="s/div5.png" style="width:100%"></div>
- <div id="divider1" class="insgfxbut"><img src="s/div4.png" style="width:100%"></div>
- <div id="divider2" class="insgfxbut"><img src="s/div3.png" style="width:100%"></div>
- <div id="divider3" class="insgfxbut"><img src="s/div2.png" style="width:100%"></div>
- <div id="divider4" class="insgfxbut" style="margin-bottom:10px"><img src="s/div1.png" style="width:100%"></div>
+ <div id="divider0" class="insgfxbut" style="height:50px;margin-top:10px"><img src="s/div5.png" style="width:100%"></div>
+ <div id="divider1" class="insgfxbut" style="height:50px;"><img src="s/div4.png" style="width:100%"></div>
+ <div id="divider2" class="insgfxbut" style="height:50px;"><img src="s/div3.png" style="width:100%"></div>
+ <div id="divider3" class="insgfxbut" style="height:50px;"><img src="s/div2.png" style="width:100%"></div>
+ <div id="divider4" class="insgfxbut" style="height:50px;margin-bottom:10px"><img src="s/div1.png" style="width:100%"></div>
 
  <div class="onoffswitch" id="gfxorientation">
  <input type="checkbox" name="isvertical" class="onoffswitch-checkbox" id="isvertical" tabindex="0" checked="">
@@ -951,22 +951,22 @@ function boxmod() {
     $("#frontbox").val(frontcode);
         $("#backbox").val(backcode);
         fronturi = "data:image/svg+xml,"+encodeURIComponent(frontcode);
-        backuri = "data:image/svg+xml,"+encodeURIComponent(frontcode);
+        backuri = "data:image/svg+xml,"+encodeURIComponent(backcode);
 
 
 }
 function frontclick(){
-        // $("#ManualFrame").attr("height", screen.height);
-        // $("#ManualFrame").attr("width", screen.width);
-        // $("#ManualFrame").attr("src", fronturi);
              var win = window.open();
-     win.document.write('<iframe src="'+ fronturi +'"></iframe>');
+     win.document.write('<iframe style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;" src="'+ fronturi +'"></iframe>');
+     win.document.title = "Front Flask Design"
 
 
   }
 
 function backclick(){
-  window.location = backuri;
+             var win = window.open();
+     win.document.write('<iframe style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;" src="'+ backuri +'"></iframe>');
+     win.document.title = "Back Flask Design"
 }
 
 //});
@@ -1580,7 +1580,7 @@ $( "#showcode" ).click(function() {
   <a id="frontlink" href="#" onclick="frontclick();">Link to .svg file</a><br>
   		<h1>Back Code</h1><br>
     <textarea id="backbox" name="Back Code" rows="14" cols="30"></textarea><br><br>
-      <a id="backlink" >Link to .svg file</a><br><br>
+      <a id="backlink" href="#" onclick="backclick();">Link to .svg file</a><br><br>
 </center>
 </div>
 <div id="video-popup" class="white-popup mfp-hide">
