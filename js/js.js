@@ -138,7 +138,7 @@ $(window).scroll(function() {
             });
 
 
-                     if ($(window).scrollTop() + (window.innerHeight)-100 < $(target).offset().top + ($(target).outerHeight()/2)) {
+            if ($(window).scrollTop() + (window.innerHeight/2)+100 < $(target).offset().top + ($(target).outerHeight()/2)) {
                 $(this).find(".overlayimg").removeClass("opacityclass");
             }
         });
