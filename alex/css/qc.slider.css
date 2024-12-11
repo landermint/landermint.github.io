@@ -145,7 +145,7 @@ section.slide .slider-container .drt-control:hover {
 	
 }
 section.slide .slider-container .drt-control {
-	z-index: 100;
+	z-index: 101;
 }
 section.slide .slider-container .drt-control.control-left {
   left: -20px;
