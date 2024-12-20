@@ -15,6 +15,33 @@ body {
 	text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
 	
 }
+.galcontain{
+	width:90%;
+	margin-left:auto;
+	margin-right:auto;
+	padding:10px;
+}
+#mygallery img{
+	
+}
+.galcontain {
+  width: 90%;
+  padding: 25px 0;
+	margin-left:auto;
+	margin-right:auto;
+  max-width: 1500px;
+}
+@media (max-width:768px) {
+	.galcontain {
+	  width: 100%;
+	}
+}
+.galspacer{
+	padding-top:40px;
+	padding-bottom:40px;
+	padding-left:10px;
+	padding-right:10px;
+}
 @media (max-width:768px) {
 	#carouselText{
 		top:0px;
@@ -90,8 +117,7 @@ body {
   color: #d983a6
 }
 img {
-  max-width: 100%;
-  vertical-align: middle
+
 }
 h1 {
   font-size: 2rem
