@@ -41,11 +41,11 @@ body {
 }
 @media (max-width:768px) {
   .layout img{
-    height:143px;
+    height:115px;
 
   }
   .layout h1{
-      font-size:22px !important;
+      font-size:18px !important;
   }
 }
 .layoutabout img{
