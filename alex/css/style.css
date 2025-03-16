@@ -39,6 +39,15 @@ body {
   padding-top:50px;
   padding-bottom:50px;
 }
+@media (max-width:768px) {
+  .layout img{
+    height:143px;
+
+  }
+  .layout h1{
+      font-size:22px !important;
+  }
+}
 .layoutabout img{
   height:250px;
 
